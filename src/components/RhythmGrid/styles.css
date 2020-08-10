@@ -1,0 +1,8 @@
+#rhythm-grid {
+    width: 100vw;
+
+    background: var(--color-tertiary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

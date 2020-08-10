@@ -1,14 +1,11 @@
 import React from 'react';
 
-import levadaLogo from './assets/images/levada-logo-white.svg';
+import MainPage from './pages/MainPage';
 
-function App() {
-    return (
-        <div className="App">
-            <img src={levadaLogo} />
-            <h1>Hello World</h1>
-        </div>
-    );
+import './assets/styles/global.css';
+
+function App(): JSX.Element {
+    return <MainPage />;
 }
 
 export default App;

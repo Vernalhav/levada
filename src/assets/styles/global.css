@@ -23,11 +23,17 @@ body,
     align-items: center;
 }
 
+body {
+    background: var(--color-background);
+}
+
 body,
 input,
 button,
 textarea {
-    font-weight: 500;
-    font-family: 'Recursive';
+    font-weight: 400;
+    font-family: 'Noto Sans TC';
     font-size: 1.6rem;
+    text-align: center;
+    color: var(--color-contrast);
 }

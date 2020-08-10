@@ -21,5 +21,5 @@
 \relative c' {
 	\time 4/4
 	\set Timing.beamExceptions = #'()
-	c16 c8 c16 c8. c16 c16 c8. c4 c8 c8
+	c4
 }
