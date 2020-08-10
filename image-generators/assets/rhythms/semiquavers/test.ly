@@ -2,11 +2,6 @@
 
 \paper {
   indent=0\mm
-  line-width=120\mm
-  oddFooterMarkup=##f
-  oddHeaderMarkup=##f
-  bookTitleMarkup = ##f
-  scoreTitleMarkup = ##f
 }
 
 \layout {
@@ -23,6 +18,8 @@
     \remove "Clef_engraver"
 }
 
-\relative {
-	c'4 d e f g a b c2~ c2 c,
+\relative c' {
+	\time 4/4
+	\set Timing.beamExceptions = #'()
+	c16 c8 c16 c8. c16 c16 c8. c4 c8 c8
 }
