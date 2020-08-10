@@ -1,0 +1,33 @@
+:root {
+    --color-background: #2F2F2F;
+    --color-contrast: #FFFFFF;
+    --color-secondary: #3A7D44;
+    --color-tertiary: #B7245C;
+    --color-quaternary: #A11692;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+#root {
+    height: 100vh;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body,
+input,
+button,
+textarea {
+    font-weight: 500;
+    font-family: 'Recursive';
+    font-size: 1.6rem;
+}
