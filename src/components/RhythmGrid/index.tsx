@@ -1,11 +1,16 @@
 import React from 'react';
 
+import RhythmicFigure from '../RhythmicFigure';
+
 import './styles.css';
 
 function RhythmGrid(): JSX.Element {
     return (
         <div id="rhythm-grid">
-            <h1>Hello World</h1>
+            <RhythmicFigure type="quavers" />
+            <RhythmicFigure type="crotchet" />
+            <RhythmicFigure type="quavers" />
+            <RhythmicFigure type="crotchet" />
         </div>
     );
 }

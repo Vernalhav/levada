@@ -21,5 +21,8 @@
 \relative c' {
 	\time 4/4
 	\set Timing.beamExceptions = #'()
+	\override Voice.NoteHead.color = #white
+    \override Voice.Beam.color = #white
+	\override Voice.Stem.color = #white
 	c8 c8
 }
