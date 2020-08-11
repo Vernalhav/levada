@@ -10,9 +10,9 @@
     width: 100vw;
     height: 5rem;
 
-    padding: 1.2rem;
+    padding: 0.4rem;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 #main-page header img {
