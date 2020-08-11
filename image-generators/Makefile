@@ -1,4 +1,4 @@
-SOURCE=rhythms/crotchets/test.ly
+SOURCE=rhythms/crotchets/crotchets.ly
 
 OUTPUT_DIR=$(dir $(SOURCE))
 SRC_NAME=$(notdir $(SOURCE))
