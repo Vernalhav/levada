@@ -26,32 +26,19 @@ const RHYTHMIC_FIGURES: RhythmicFigureData = {
     },
 };
 
-class RhythmicFigure extends React.Component<RhythmicFigureProps> {
-    image: string;
-    type: string;
-    isHighlighted: boolean;
+function RhythmicFigure(props: RhythmicFigureProps): JSX.Element {
+    const image = RHYTHMIC_FIGURES[props.type].image;
 
-    constructor(props: RhythmicFigureProps) {
-        super(props);
+    const classes = classNames({
+        'rhythmic-figure': true,
+        highlighted: props.isHighlighted,
+    });
 
-        this.type = RHYTHMIC_FIGURES.hasOwnProperty(props.type) ? props.type : 'crotchet';
-
-        this.image = RHYTHMIC_FIGURES[this.type].image;
-        this.isHighlighted = props.isHighlighted || false;
-    }
-
-    render(): JSX.Element {
-        const classes = classNames({
-            'rhythmic-figure': true,
-            highlighted: this.isHighlighted,
-        });
-
-        return (
-            <div className={classes}>
-                <img src={this.image} alt={`$(this.type)`} />
-            </div>
-        );
-    }
+    return (
+        <div className={classes}>
+            <img src={image} alt={`$(this.type)`} />
+        </div>
+    );
 }
 
 export default RhythmicFigure;

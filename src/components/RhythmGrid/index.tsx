@@ -14,8 +14,6 @@ function RhythmGrid(props: RhythmGridProps): JSX.Element {
 
     for (let i = 0; i < props.maxBeats; i++) rhythmicFigures.push('quavers');
 
-    console.log(props.currentBeat);
-
     return (
         <div className="container">
             <div id="rhythm-grid">
@@ -23,7 +21,7 @@ function RhythmGrid(props: RhythmGridProps): JSX.Element {
                     return (
                         <RhythmicFigure
                             type={rhythmicFigure}
-                            isHighlighted={props.currentBeat % props.maxBeats === i - 1}
+                            isHighlighted={(props.currentBeat - 1) % props.maxBeats === i}
                             key={i}
                         />
                     );
