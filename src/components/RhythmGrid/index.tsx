@@ -19,7 +19,7 @@ function RhythmGrid(props: RhythmGridProps): JSX.Element {
                     return (
                         <RhythmicFigure
                             type={rhythmicFigure}
-                            isHighlighted={(props.currentBeat - 1) % maxBeats === i}
+                            isHighlighted={props.currentBeat % maxBeats === i}
                             key={i}
                         />
                     );

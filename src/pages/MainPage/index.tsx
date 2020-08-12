@@ -10,7 +10,7 @@ import getRhythmicFigure from '../../utils/getRhythmicFigure';
 import './styles.css';
 
 function MainPage(): JSX.Element {
-    const [currentBeat, setCurrentBeat] = useState(1);
+    const [currentBeat, setCurrentBeat] = useState(0);
     const [maxBeats, setMaxBeats] = useState(4);
     const [rhythmicFigures, setRhythmicFigures] = useState(() => {
         const randomArray: string[] = [];
@@ -41,7 +41,7 @@ function MainPage(): JSX.Element {
                         <button
                             type="button"
                             onClick={() => {
-                                setCurrentBeat(currentBeat + 1);
+                                setCurrentBeat((currentBeat + 1) % maxBeats);
                                 beat.play();
                                 snap.play();
                             }}
@@ -55,6 +55,7 @@ function MainPage(): JSX.Element {
                             onClick={() => {
                                 if (maxBeats < 10) {
                                     setMaxBeats(maxBeats + 1);
+                                    setCurrentBeat(currentBeat % maxBeats);
                                     handleNewBeat();
                                 }
                             }}
@@ -66,6 +67,7 @@ function MainPage(): JSX.Element {
                             onClick={() => {
                                 if (maxBeats > 4) {
                                     setMaxBeats(maxBeats - 1);
+                                    setCurrentBeat(currentBeat % maxBeats);
                                     handleRemoveBeat();
                                 }
                             }}
