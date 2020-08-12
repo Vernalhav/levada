@@ -17,6 +17,8 @@ interface RhythmicFigureData {
     };
 }
 
+export const RHYTHMIC_FIGURE_NAMES: string[] = ['crotchet', 'quavers'];
+
 const RHYTHMIC_FIGURES: RhythmicFigureData = {
     crotchet: {
         image: crotchetImage,
