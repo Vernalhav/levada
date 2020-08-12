@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
+import beatSound from '../../assets/sounds/beat.wav';
+import snapSound from '../../assets/sounds/snap.wav';
+
 import RhythmGrid from '../../components/RhythmGrid';
 
 import './styles.css';
@@ -16,6 +19,8 @@ function MainPage(): JSX.Element {
             </header>
 
             <div className="center-container">
+                <audio src={beatSound} preload="auto" />
+                <audio src={snapSound} preload="auto" />
                 <div className="container">
                     <div className="btn-container">
                         <button
