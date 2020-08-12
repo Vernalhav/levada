@@ -4,11 +4,12 @@
     align-items: center;
     height: 7rem;
     border: 3px solid var(--color-contrast);
-    border-radius: 1.2rem;
+    /* border-radius: 1.2rem; */
     opacity: 0.3;
     transition: opacity 0.2s;
 }
 
-.rhythmic-figure:hover {
+.rhythmic-figure:hover,
+.rhythmic-figure.highlighted{
     opacity: 1;
 }

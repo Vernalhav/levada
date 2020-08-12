@@ -24,11 +24,11 @@ body,
 }
 
 body {
+    color: var(--color-contrast);
     background: var(--color-background);
 }
 
 body,
-input,
 button,
 textarea {
     font-weight: 400;
@@ -36,4 +36,18 @@ textarea {
     font-size: 1.6rem;
     text-align: center;
     color: var(--color-contrast);
+}
+
+input {
+    font-weight: 400;
+    font-family: 'Noto Sans TC';
+    font-size: 1.6rem;
+    text-align: center;
+    color: var(--color-background);    
+}
+
+button {
+    padding: 1rem;
+    border: none;
+    background-color: var(--color-secondary);
 }
