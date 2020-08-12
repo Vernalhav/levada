@@ -15,8 +15,8 @@ function RhythmGrid(props: RhythmGridProps): JSX.Element {
     for (let i = 0; i < props.maxBeats; i++) rhythmicFigures.push('quavers');
 
     return (
-        <div className="container">
-            <div id="rhythm-grid">
+        <div id="rhythm-grid">
+            <div className="container">
                 {rhythmicFigures.map((rhythmicFigure: string, i: number) => {
                     return (
                         <RhythmicFigure
