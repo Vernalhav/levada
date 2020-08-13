@@ -1,32 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import quaversImage from '../../assets/images/rhythms/quavers.png';
-import crotchetImage from '../../assets/images/rhythms/crotchet.png';
-
 import './styles.css';
+
+import { RHYTHMIC_FIGURES } from '../../assets/rhythmic_figures';
 
 interface RhythmicFigureProps {
     type: string;
     isHighlighted?: boolean;
 }
-
-interface RhythmicFigureData {
-    [index: string]: {
-        image: string;
-    };
-}
-
-export const RHYTHMIC_FIGURE_NAMES: string[] = ['crotchet', 'quavers'];
-
-const RHYTHMIC_FIGURES: RhythmicFigureData = {
-    crotchet: {
-        image: crotchetImage,
-    },
-    quavers: {
-        image: quaversImage,
-    },
-};
 
 function RhythmicFigure(props: RhythmicFigureProps): JSX.Element {
     const image = RHYTHMIC_FIGURES[props.type].image;

@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
 
 import RhythmGrid from '../../components/RhythmGrid';
-import getRhythmicFigure from '../../utils/getRhythmicFigure';
 
-import playBeat from '../../utils/getRhythmicFigure';
+import getRhythmicFigure from '../../utils/getRhythmicFigure';
+import playBeat from '../../utils/playBeat';
 
 import './styles.css';
 
@@ -29,7 +29,8 @@ function MainPage(): JSX.Element {
 
     async function handleNextBeat() {
         setCurrentBeat((currentBeat + 1) % maxBeats);
-        await playBeat(rhythmicFigures[currentBeat]);
+        await playBeat(rhythmicFigures[currentBeat], bpm);
+        await playBeat(rhythmicFigures[currentBeat], bpm);
     }
 
     return (
