@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import './styles.css';
 
-import { RHYTHMIC_FIGURES } from '../../assets/rhythmic_figures';
+import { RHYTHMIC_FIGURES } from '../../assets/RhythmicFigures';
 
 interface RhythmicFigureProps {
     type: string;

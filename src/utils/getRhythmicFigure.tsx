@@ -1,4 +1,4 @@
-import { RHYTHMIC_FIGURE_NAMES } from '../assets/rhythmic_figures';
+import { RHYTHMIC_FIGURE_NAMES } from '../assets/RhythmicFigures';
 
 /**
  * Returns string representing a valid

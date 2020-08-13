@@ -3,6 +3,8 @@ import snapSound from '../assets/sounds/snap.wav';
 
 import sleep from './sleep';
 
+import { RHYTHMIC_FIGURES } from '../assets/RhythmicFigures';
+
 const beat = new Audio(beatSound);
 const snap = new Audio(snapSound);
 
