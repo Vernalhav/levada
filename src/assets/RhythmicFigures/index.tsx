@@ -1,9 +1,15 @@
 import crotchet from './Crotchet';
 import quavers from './Quavers';
 
+interface RhythmElementData {
+    type: string; // 'note' or 'pause'
+    duration: number; // fraction of the beat (i.e. 1/4 for crotchets)
+}
+
 interface RhythmicFigureData {
     [index: string]: {
         image: string;
+        rhythm: RhythmElementData[];
     };
 }
 
