@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
 
@@ -12,12 +12,16 @@ import './styles.css';
 function MainPage(): JSX.Element {
     const [currentBeat, setCurrentBeat] = useState(0);
     const [maxBeats, setMaxBeats] = useState(4);
-    const [bpm, setBpm] = useState(60);
+    const [bpm, setBpm] = useState(80);
     const [rhythmicFigures, setRhythmicFigures] = useState(() => {
         const randomArray: string[] = [];
         for (let i = 0; i < maxBeats; i++) randomArray.push(getRhythmicFigure());
         return randomArray;
     });
+
+    useEffect(() => {
+        playBeat(rhythmicFigures[currentBeat], bpm);
+    }, [currentBeat]);
 
     function handleNewBeat() {
         setRhythmicFigures([...rhythmicFigures, getRhythmicFigure()]);
@@ -28,9 +32,8 @@ function MainPage(): JSX.Element {
     }
 
     async function handleNextBeat() {
-        setCurrentBeat((currentBeat + 1) % maxBeats);
-        await playBeat(rhythmicFigures[currentBeat], bpm);
-        await playBeat(rhythmicFigures[currentBeat], bpm);
+        const nextBeat = (currentBeat + 1) % maxBeats;
+        setCurrentBeat(nextBeat);
     }
 
     return (

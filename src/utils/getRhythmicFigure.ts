@@ -9,7 +9,7 @@ import { RHYTHMIC_FIGURE_NAMES } from '../assets/RhythmicFigures';
 export default function getRhythmicFigure(figure?: string): string {
     if (!figure) return RHYTHMIC_FIGURE_NAMES[Math.floor(Math.random() * RHYTHMIC_FIGURE_NAMES.length)];
     if (!RHYTHMIC_FIGURE_NAMES.hasOwnProperty(figure.toLowerCase())) {
-        throw new RangeError(`Invalid rhythmic figure: $(figure)`);
+        throw new RangeError(`Invalid rhythmic figure: ${figure}`);
     }
     return figure;
 }
