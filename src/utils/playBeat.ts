@@ -18,14 +18,17 @@ export default async function playBeat(rhythmicFigure: string, tempo: number, be
     console.log(`Playing ${rhythmicFigure}...`);
     const rhythm = RHYTHMIC_FIGURES[rhythmicFigure].rhythm;
 
-    // beat.play();
+    // Heuristic so that the audio doesn't get overlaid on faster BPMs
+    beat.playbackRate = tempo >= 60 ? tempo / 40 : 1;
+    snap.playbackRate = tempo >= 60 ? tempo / 40 : 1;
+
     for (let i = 0; i < rhythm.length; i++) {
         const rhythmElement = rhythm[i];
 
         const beatFraction = rhythmElement.duration * beatUnit;
         const elementLength = 60000 * (beatFraction / tempo);
 
-        console.log(`beat frac: ${beatFraction}\nelement length: ${elementLength}`);
+        console.log(`element ${i}\nnbeat frac: ${beatFraction}\nelement length: ${elementLength}`);
 
         if (i === 0) beat.play();
         if (rhythmElement.type === 'note') snap.play();

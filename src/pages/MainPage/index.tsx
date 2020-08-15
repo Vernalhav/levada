@@ -13,7 +13,7 @@ import sleep from '../../utils/sleep';
 function MainPage(): JSX.Element {
     const [currentBeat, setCurrentBeat] = useState(0);
     const [maxBeats, setMaxBeats] = useState(4);
-    const [bpm, setBpm] = useState(60);
+    const [bpm, setBpm] = useState(100);
     const [rhythmicFigures, setRhythmicFigures] = useState(() => {
         const randomArray: string[] = [];
         for (let i = 0; i < maxBeats; i++) randomArray.push(getRhythmicFigure());
