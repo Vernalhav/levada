@@ -18,7 +18,7 @@ export default async function playBeat(rhythmicFigure: string, tempo: number, be
     console.log(`Playing ${rhythmicFigure}...`);
     const rhythm = RHYTHMIC_FIGURES[rhythmicFigure].rhythm;
 
-    beat.play();
+    // beat.play();
     for (let i = 0; i < rhythm.length; i++) {
         const rhythmElement = rhythm[i];
 
@@ -27,6 +27,7 @@ export default async function playBeat(rhythmicFigure: string, tempo: number, be
 
         console.log(`beat frac: ${beatFraction}\nelement length: ${elementLength}`);
 
+        if (i === 0) beat.play();
         if (rhythmElement.type === 'note') snap.play();
 
         await sleep(elementLength);

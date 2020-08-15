@@ -8,6 +8,7 @@ import getRhythmicFigure from '../../utils/getRhythmicFigure';
 import playBeat from '../../utils/playBeat';
 
 import './styles.css';
+import sleep from '../../utils/sleep';
 
 function MainPage(): JSX.Element {
     const [currentBeat, setCurrentBeat] = useState(0);
@@ -18,10 +19,16 @@ function MainPage(): JSX.Element {
         for (let i = 0; i < maxBeats; i++) randomArray.push(getRhythmicFigure());
         return randomArray;
     });
+    const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
-        playBeat(rhythmicFigures[currentBeat], bpm);
-    }, [currentBeat]);
+        async function waitForNextBeat() {
+            await playBeat(rhythmicFigures[currentBeat], bpm);
+            goToNextBeat();
+        }
+
+        if (isPlaying) waitForNextBeat();
+    }, [currentBeat, isPlaying]);
 
     function handleNewBeat() {
         setRhythmicFigures([...rhythmicFigures, getRhythmicFigure()]);
@@ -31,9 +38,13 @@ function MainPage(): JSX.Element {
         setRhythmicFigures(rhythmicFigures.slice(0, rhythmicFigures.length - 1));
     }
 
-    async function handleNextBeat() {
+    async function goToNextBeat() {
         const nextBeat = (currentBeat + 1) % maxBeats;
         setCurrentBeat(nextBeat);
+    }
+
+    function handlePlayPause() {
+        setIsPlaying(!isPlaying);
     }
 
     return (
@@ -45,8 +56,8 @@ function MainPage(): JSX.Element {
             <div className="center-container">
                 <div className="container">
                     <div className="btn-container">
-                        <button type="button" onClick={handleNextBeat}>
-                            Next beat
+                        <button type="button" onClick={handlePlayPause}>
+                            {isPlaying ? 'Pause' : 'Play'}
                         </button>
                     </div>
                     <div className="btn-container">
