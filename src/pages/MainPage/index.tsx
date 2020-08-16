@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react';
 import classNames from 'classnames';
 
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
@@ -18,7 +18,7 @@ function MainPage(): JSX.Element {
 
     const [currentBeat, setCurrentBeat] = useState(0);
     const [maxBeats, setMaxBeats] = useState(INIT_MAX_BEATS);
-    const bpm = INIT_BPM;
+    const [bpm, setBpm] = useState(INIT_BPM);
 
     const [rhythmicFigures, setRhythmicFigures] = useState(() => {
         const randomArray: string[] = [];
@@ -80,6 +80,20 @@ function MainPage(): JSX.Element {
                         <button type="button" disabled={isPlaying || maxBeats <= MIN_BEATS} onClick={handleRemoveBeat}>
                             -
                         </button>
+                        <div className="bpm-input">
+                            <input
+                                id="tempo"
+                                min="50"
+                                max="160"
+                                type="number"
+                                value={bpm}
+                                onChange={(e: FormEvent<HTMLInputElement>) => {
+                                    const newBpm = Number(e.currentTarget.value);
+                                    if (50 <= newBpm && newBpm <= 160) setBpm(newBpm);
+                                }}
+                            />
+                            <label htmlFor="tempo">BPM</label>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -43,11 +43,22 @@
 #main-page .center-container .container .btn-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 #main-page .center-container .container .btn-container.is-hidden {
     display: none;
+}
+
+#main-page .center-container .container .btn-container .bpm-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#main-page .center-container .container .btn-container .bpm-input input {
+    height: 3rem;
+    width: 6rem;
 }
 
 #main-page .center-container .container .btn-container button {
