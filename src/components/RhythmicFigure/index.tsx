@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import classNames from 'classnames';
 
 import './styles.css';
 
 import { RHYTHMIC_FIGURES } from '../../assets/RhythmicFigures';
 
-interface RhythmicFigureProps {
+interface RhythmicFigureProps extends HTMLAttributes<HTMLDivElement> {
     type: string;
-    isHighlighted?: boolean;
+    isCurrentBeat: boolean;
+    isShining: boolean;
 }
 
-function RhythmicFigure(props: RhythmicFigureProps): JSX.Element {
-    const image = RHYTHMIC_FIGURES[props.type].image;
+function RhythmicFigure({ type, isCurrentBeat, isShining }: RhythmicFigureProps): JSX.Element {
+    const image = RHYTHMIC_FIGURES[type].image;
 
     const classes = classNames({
         'rhythmic-figure': true,
-        highlighted: props.isHighlighted,
+        highlighted: isCurrentBeat,
+        shining: isShining,
     });
 
     return (
