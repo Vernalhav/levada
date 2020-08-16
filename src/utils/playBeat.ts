@@ -19,8 +19,8 @@ export default async function playBeat(rhythmicFigure: string, tempo: number, be
     const rhythm = RHYTHMIC_FIGURES[rhythmicFigure].rhythm;
 
     // Heuristic so that the audio doesn't get overlaid on faster BPMs
-    beat.playbackRate = tempo >= 60 ? tempo / 40 : 1;
-    snap.playbackRate = tempo >= 60 ? tempo / 40 : 1;
+    beat.playbackRate = tempo >= 60 ? tempo / 20 : 1;
+    snap.playbackRate = tempo >= 60 ? tempo / 20 : 1;
 
     for (let i = 0; i < rhythm.length; i++) {
         const rhythmElement = rhythm[i];

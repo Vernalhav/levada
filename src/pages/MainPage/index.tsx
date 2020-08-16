@@ -10,7 +10,7 @@ import playBeat from '../../utils/playBeat';
 import './styles.css';
 
 function MainPage(): JSX.Element {
-    const INIT_BPM = 80;
+    const INIT_BPM = 150;
     const INIT_MAX_BEATS = 4;
     const MAX_BEATS = 10;
     const MIN_BEATS = 4;
@@ -73,10 +73,10 @@ function MainPage(): JSX.Element {
                         </button>
                     </div>
                     <div className="btn-container">
-                        <button type="button" disabled={isPlaying} onClick={handleNewBeat}>
+                        <button type="button" disabled={isPlaying || maxBeats >= MAX_BEATS} onClick={handleNewBeat}>
                             +
                         </button>
-                        <button type="button" disabled={isPlaying} onClick={handleRemoveBeat}>
+                        <button type="button" disabled={isPlaying || maxBeats <= MIN_BEATS} onClick={handleRemoveBeat}>
                             -
                         </button>
                     </div>

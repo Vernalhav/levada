@@ -53,6 +53,7 @@ button {
     border: none;
     background-color: var(--color-secondary);
     transition: background-color 0.2s;
+    transition: opacity 0.2s;
     cursor: pointer;
 }
 
