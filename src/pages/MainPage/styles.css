@@ -14,7 +14,8 @@
     display: flex;
     justify-content: center;
 
-    margin-bottom: 2rem;
+    margin-bottom: 0.7rem;
+    margin-top: 0.7rem;
 }
 
 #main-page header img {

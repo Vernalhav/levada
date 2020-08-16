@@ -15,7 +15,7 @@ const snap = new Audio(snapSound);
  * @param beatUnit note value of a beat. (i.e. 4 in 3/4 time)
  */
 export default async function playBeat(rhythmicFigure: string, tempo: number, beatUnit = 4): Promise<void> {
-    console.log(`Playing ${rhythmicFigure}...`);
+    //console.log(`Playing ${rhythmicFigure}...`);
     const rhythm = RHYTHMIC_FIGURES[rhythmicFigure].rhythm;
 
     // Heuristic so that the audio doesn't get overlaid on faster BPMs
@@ -27,8 +27,6 @@ export default async function playBeat(rhythmicFigure: string, tempo: number, be
 
         const beatFraction = rhythmElement.duration * beatUnit;
         const elementLength = 60000 * (beatFraction / tempo);
-
-        console.log(`element ${i}\nnbeat frac: ${beatFraction}\nelement length: ${elementLength}`);
 
         if (i === 0) beat.play();
         if (rhythmElement.type === 'note') snap.play();

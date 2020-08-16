@@ -8,39 +8,51 @@ import getRhythmicFigure from '../../utils/getRhythmicFigure';
 import playBeat from '../../utils/playBeat';
 
 import './styles.css';
-import sleep from '../../utils/sleep';
 
 function MainPage(): JSX.Element {
+    const INIT_BPM = 80;
+    const INIT_MAX_BEATS = 4;
+    const MAX_BEATS = 10;
+    const MIN_BEATS = 4;
+
     const [currentBeat, setCurrentBeat] = useState(0);
-    const [maxBeats, setMaxBeats] = useState(4);
-    const [bpm, setBpm] = useState(100);
+    const [maxBeats, setMaxBeats] = useState(INIT_MAX_BEATS);
+    const bpm = INIT_BPM;
+
     const [rhythmicFigures, setRhythmicFigures] = useState(() => {
         const randomArray: string[] = [];
         for (let i = 0; i < maxBeats; i++) randomArray.push(getRhythmicFigure());
         return randomArray;
     });
+
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
         async function waitForNextBeat() {
             await playBeat(rhythmicFigures[currentBeat], bpm);
-            goToNextBeat();
+            const nextBeat = (currentBeat + 1) % maxBeats;
+            setCurrentBeat(nextBeat);
         }
 
         if (isPlaying) waitForNextBeat();
-    }, [currentBeat, isPlaying]);
+    });
+
+    useEffect(() => {
+        setCurrentBeat(currentBeat % maxBeats);
+    }, [currentBeat, maxBeats]);
 
     function handleNewBeat() {
-        setRhythmicFigures([...rhythmicFigures, getRhythmicFigure()]);
+        if (maxBeats < MAX_BEATS) {
+            setMaxBeats(maxBeats + 1);
+            setRhythmicFigures([...rhythmicFigures, getRhythmicFigure()]);
+        }
     }
 
     function handleRemoveBeat() {
-        setRhythmicFigures(rhythmicFigures.slice(0, rhythmicFigures.length - 1));
-    }
-
-    async function goToNextBeat() {
-        const nextBeat = (currentBeat + 1) % maxBeats;
-        setCurrentBeat(nextBeat);
+        if (maxBeats > MIN_BEATS) {
+            setMaxBeats(maxBeats - 1);
+            setRhythmicFigures(rhythmicFigures.slice(0, rhythmicFigures.length - 1));
+        }
     }
 
     function handlePlayPause() {
@@ -61,28 +73,10 @@ function MainPage(): JSX.Element {
                         </button>
                     </div>
                     <div className="btn-container">
-                        <button
-                            type="button"
-                            onClick={() => {
-                                if (maxBeats < 10) {
-                                    setMaxBeats(maxBeats + 1);
-                                    setCurrentBeat(currentBeat % maxBeats);
-                                    handleNewBeat();
-                                }
-                            }}
-                        >
+                        <button type="button" disabled={isPlaying} onClick={handleNewBeat}>
                             +
                         </button>
-                        <button
-                            type="button"
-                            onClick={() => {
-                                if (maxBeats > 4) {
-                                    setMaxBeats(maxBeats - 1);
-                                    setCurrentBeat(currentBeat % maxBeats);
-                                    handleRemoveBeat();
-                                }
-                            }}
-                        >
+                        <button type="button" disabled={isPlaying} onClick={handleRemoveBeat}>
                             -
                         </button>
                     </div>

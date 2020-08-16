@@ -4,6 +4,7 @@
     --color-secondary: #3A7D44;
     --color-tertiary: #B7245C;
     --color-quaternary: #A11692;
+    --color-button-disabled: #c2c2c2c0;
 }
 
 * {
@@ -51,4 +52,12 @@ button {
     padding: 1rem;
     border: none;
     background-color: var(--color-secondary);
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+button:disabled {
+    background: var(--color-button-disabled);
+    cursor: not-allowed;
+    opacity: 0.4;
 }
