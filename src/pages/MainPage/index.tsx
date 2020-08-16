@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import classNames from 'classnames';
 
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
 
@@ -10,7 +11,7 @@ import playBeat from '../../utils/playBeat';
 import './styles.css';
 
 function MainPage(): JSX.Element {
-    const INIT_BPM = 150;
+    const INIT_BPM = 100;
     const INIT_MAX_BEATS = 4;
     const MAX_BEATS = 10;
     const MIN_BEATS = 4;
@@ -61,7 +62,7 @@ function MainPage(): JSX.Element {
 
     return (
         <div id="main-page">
-            <header>
+            <header className={classNames({ 'is-hidden': isPlaying })}>
                 <img src={levadaLogo} alt="logo Levada" />
             </header>
 
@@ -72,7 +73,7 @@ function MainPage(): JSX.Element {
                             {isPlaying ? 'Pause' : 'Play'}
                         </button>
                     </div>
-                    <div className="btn-container">
+                    <div className={classNames({ 'btn-container': true, 'is-hidden': isPlaying })}>
                         <button type="button" disabled={isPlaying || maxBeats >= MAX_BEATS} onClick={handleNewBeat}>
                             +
                         </button>
