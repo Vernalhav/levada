@@ -7,9 +7,10 @@ import RhythmGrid from '../../components/RhythmGrid';
 import Select from '../../components/Select';
 
 import getRhythmicFigure from '../../utils/getRhythmicFigure';
-import playBeat, { cancelPlayBeat } from '../../utils/playBeat';
+import playBeat, { cancelPlayBeat, getBeatSound } from '../../utils/playBeat';
 
 import './styles.css';
+import sleep from '../../utils/sleep';
 
 function MainPage(): JSX.Element {
     const INIT_BPM = 100;
@@ -21,6 +22,7 @@ function MainPage(): JSX.Element {
     const INIT_MAX_BEATS = 4;
     const MAX_BEATS = 10;
     const MIN_BEATS = 4;
+    const BEATS_PER_MEASURE = 4;
 
     const [currentBeat, setCurrentBeat] = useState(0);
     const [maxBeats, setMaxBeats] = useState(INIT_MAX_BEATS);
@@ -32,7 +34,8 @@ function MainPage(): JSX.Element {
         return randomArray;
     });
 
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false); // Determines whether or not the main rhythm is playing
+    const [isGameActive, setIsGameActive] = useState(false); // Determines whether or not the rhythm or initial measures are playing
 
     const [enableHighlighting, setEnableHighlighting] = useState(false);
 
@@ -53,16 +56,19 @@ function MainPage(): JSX.Element {
         else if (isPlaying) endGame();
     }, [isPlaying, currentBeat, maxBeats, rhythmicFigures, bpm]);
 
-    function startGame() {
+    async function startGame() {
         cancelPlayBeat(false);
+        setIsGameActive(true);
+        await playInitialMeasure();
         setEnableHighlighting(true);
-        setIsPlaying(true);
+        setIsPlaying(true); // Actually starts rhythm loop
     }
 
     function endGame() {
         cancelPlayBeat(true);
         setEnableHighlighting(false);
         setIsPlaying(false);
+        setIsGameActive(false);
         setCurrentBeat(0);
     }
 
@@ -80,9 +86,20 @@ function MainPage(): JSX.Element {
         }
     }
 
+    async function playInitialMeasure() {
+        const beat = getBeatSound(bpm);
+
+        for (let i = 0; i < BEATS_PER_MEASURE; i++) {
+            beat.play();
+            setEnableHighlighting(true);
+            setTimeout(() => setEnableHighlighting(false), 100);
+            await sleep(60000 / bpm);
+        }
+    }
+
     return (
         <div id="main-page">
-            <header className={classNames({ 'is-hidden': isPlaying })}>
+            <header className={classNames({ 'is-hidden': isGameActive })}>
                 <img src={levadaLogo} alt="logo Levada" />
             </header>
 
@@ -93,7 +110,7 @@ function MainPage(): JSX.Element {
                             {isPlaying ? 'Stop' : 'Play'}
                         </button>
                     </div>
-                    <div className={classNames({ 'btn-container': true, 'is-hidden': isPlaying })}>
+                    <div className={classNames({ 'btn-container': true, 'is-hidden': isGameActive })}>
                         <button type="button" disabled={isPlaying || maxBeats >= MAX_BEATS} onClick={handleNewBeat}>
                             +
                         </button>

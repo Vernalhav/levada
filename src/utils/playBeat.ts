@@ -5,13 +5,18 @@ import sleep from './sleep';
 
 import { RHYTHMIC_FIGURES } from '../assets/RhythmicFigures';
 
-const beat = new Audio(beatSound);
+export const beat = new Audio(beatSound);
 const snap = new Audio(snapSound);
 
 let isCancelled = true;
 
 export function cancelPlayBeat(val: boolean): void {
     isCancelled = val;
+}
+
+export function getBeatSound(tempo = 100): HTMLAudioElement {
+    beat.playbackRate = tempo >= 60 ? tempo / 20 : 1;
+    return beat;
 }
 
 /**
