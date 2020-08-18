@@ -7,7 +7,7 @@ import RhythmGrid from '../../components/RhythmGrid';
 import Select from '../../components/Select';
 
 import getRhythmicFigure from '../../utils/getRhythmicFigure';
-import playBeat from '../../utils/playBeat';
+import playBeat, { cancelPlayBeat } from '../../utils/playBeat';
 
 import './styles.css';
 
@@ -34,6 +34,8 @@ function MainPage(): JSX.Element {
 
     const [isPlaying, setIsPlaying] = useState(false);
 
+    const [enableHighlighting, setEnableHighlighting] = useState(false);
+
     useEffect(() => {
         async function waitForNextBeat() {
             await playBeat(rhythmicFigures[currentBeat], bpm);
@@ -48,14 +50,20 @@ function MainPage(): JSX.Element {
         }
 
         if (isPlaying && currentBeat < maxBeats) waitForNextBeat();
-        else {
-            setIsPlaying(false);
-            setCurrentBeat(0);
-        }
+        else if (isPlaying) endGame();
     }, [isPlaying, currentBeat, maxBeats, rhythmicFigures, bpm]);
 
-    function handlePlayPause() {
-        setIsPlaying(!isPlaying);
+    function startGame() {
+        cancelPlayBeat(false);
+        setEnableHighlighting(true);
+        setIsPlaying(true);
+    }
+
+    function endGame() {
+        cancelPlayBeat(true);
+        setEnableHighlighting(false);
+        setIsPlaying(false);
+        setCurrentBeat(0);
     }
 
     function handleNewBeat() {
@@ -81,8 +89,8 @@ function MainPage(): JSX.Element {
             <div className="center-container">
                 <div className="container">
                     <div className="btn-container">
-                        <button type="button" onClick={handlePlayPause}>
-                            {isPlaying ? 'Pause' : 'Play'}
+                        <button type="button" onClick={isPlaying ? endGame : startGame}>
+                            {isPlaying ? 'Stop' : 'Play'}
                         </button>
                     </div>
                     <div className={classNames({ 'btn-container': true, 'is-hidden': isPlaying })}>
@@ -110,7 +118,11 @@ function MainPage(): JSX.Element {
                 </div>
             </div>
 
-            <RhythmGrid currentBeat={currentBeat} rhythmicFigures={rhythmicFigures} />
+            <RhythmGrid
+                currentBeat={currentBeat}
+                rhythmicFigures={rhythmicFigures}
+                enableHighlighting={enableHighlighting}
+            />
         </div>
     );
 }

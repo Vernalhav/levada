@@ -22,7 +22,7 @@ function RhythmicFigure({ type, isCurrentBeat, isShining }: RhythmicFigureProps)
 
     return (
         <div className={classes}>
-            <img src={image} alt={`$(this.type)`} />
+            <img src={image} alt={`${type}`} />
         </div>
     );
 }

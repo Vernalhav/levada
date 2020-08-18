@@ -8,6 +8,12 @@ import { RHYTHMIC_FIGURES } from '../assets/RhythmicFigures';
 const beat = new Audio(beatSound);
 const snap = new Audio(snapSound);
 
+let isCancelled = true;
+
+export function cancelPlayBeat(val: boolean): void {
+    isCancelled = val;
+}
+
 /**
  *
  * @param rhythmicFigure name of the rhythmic figure as per RHYTHMIC_FIGURE keys (see assets/RhythmicFigures/index.ts)
@@ -23,6 +29,8 @@ export default async function playBeat(rhythmicFigure: string, tempo: number, be
     snap.playbackRate = tempo >= 60 ? tempo / 20 : 1;
 
     for (let i = 0; i < rhythm.length; i++) {
+        if (isCancelled) return;
+
         const rhythmElement = rhythm[i];
 
         const beatFraction = rhythmElement.duration * beatUnit;
@@ -34,10 +42,3 @@ export default async function playBeat(rhythmicFigure: string, tempo: number, be
         await sleep(elementLength);
     }
 }
-
-/**
- * 80 BPM: 4/4
- * 1/8: takes 1/2 of the beat
- * beat takes 6000/tempo ms
- * play or pause until
- */

@@ -7,15 +7,16 @@ import './styles.css';
 interface RhythmGridProps {
     currentBeat: number;
     rhythmicFigures: string[];
+    enableHighlighting?: boolean;
 }
 
-function RhythmGrid(props: RhythmGridProps): JSX.Element {
+function RhythmGrid({ enableHighlighting = false, ...props }: RhythmGridProps): JSX.Element {
     const maxBeats = props.rhythmicFigures.length;
-    const [userBeat, setUserBeat] = useState(false);
+    const [flash, setFlash] = useState(false);
 
     function beatAnimation() {
-        setUserBeat(true);
-        setTimeout(() => setUserBeat(false), 100);
+        setFlash(true);
+        setTimeout(() => setFlash(false), 100);
     }
 
     return (
@@ -25,8 +26,8 @@ function RhythmGrid(props: RhythmGridProps): JSX.Element {
                     return (
                         <RhythmicFigure
                             type={rhythmicFigure}
-                            isCurrentBeat={props.currentBeat % maxBeats === i}
-                            isShining={userBeat}
+                            isCurrentBeat={enableHighlighting && props.currentBeat % maxBeats === i}
+                            isShining={flash}
                             key={i}
                         />
                     );
