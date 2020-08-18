@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent, useCallback } from 'react';
 import classNames from 'classnames';
 
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
@@ -34,11 +34,21 @@ function MainPage(): JSX.Element {
 
     const [isPlaying, setIsPlaying] = useState(false);
 
+    const goToNextBeat = useCallback(() => {
+        const nextBeat = currentBeat + 1;
+        setCurrentBeat((prevState) => {
+            // This approach causes the visual bug to occur only if
+            // the user pauses on the first beat. If there is a better
+            // way to avoid this issue, please open a pull request :)
+            if (nextBeat !== prevState + 1) return 0;
+            return nextBeat;
+        });
+    }, [currentBeat]);
+
     useEffect(() => {
         async function waitForNextBeat() {
             await playBeat(rhythmicFigures[currentBeat], bpm);
-            const nextBeat = currentBeat + 1;
-            setCurrentBeat(nextBeat);
+            goToNextBeat();
         }
 
         if (isPlaying && currentBeat < maxBeats) waitForNextBeat();
@@ -46,7 +56,7 @@ function MainPage(): JSX.Element {
             setIsPlaying(false);
             setCurrentBeat(0);
         }
-    }, [isPlaying, currentBeat, maxBeats, rhythmicFigures, bpm]);
+    }, [isPlaying, currentBeat, maxBeats, rhythmicFigures, bpm, goToNextBeat]);
 
     function handleNewBeat() {
         if (maxBeats < MAX_BEATS) {
@@ -63,8 +73,8 @@ function MainPage(): JSX.Element {
     }
 
     function handlePlayPause() {
-        setCurrentBeat(0);
         setIsPlaying(!isPlaying);
+        setCurrentBeat(0);
     }
 
     return (
