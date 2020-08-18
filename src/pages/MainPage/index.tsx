@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent, useCallback } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import classNames from 'classnames';
 
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
@@ -34,29 +34,29 @@ function MainPage(): JSX.Element {
 
     const [isPlaying, setIsPlaying] = useState(false);
 
-    const goToNextBeat = useCallback(() => {
-        const nextBeat = currentBeat + 1;
-        setCurrentBeat((prevState) => {
-            // This approach causes the visual bug to occur only if
-            // the user pauses on the first beat. If there is a better
-            // way to avoid this issue, please open a pull request :)
-            if (nextBeat !== prevState + 1) return 0;
-            return nextBeat;
-        });
-    }, [currentBeat]);
-
     useEffect(() => {
         async function waitForNextBeat() {
             await playBeat(rhythmicFigures[currentBeat], bpm);
-            goToNextBeat();
+            const nextBeat = currentBeat + 1;
+            setCurrentBeat((prevState) => {
+                // This approach causes the visual bug to occur only if
+                // the user pauses on the first beat. If there is a better
+                // way to avoid this issue, please open a pull request :)
+                if (nextBeat !== prevState + 1) return 0;
+                return nextBeat;
+            });
         }
 
         if (isPlaying && currentBeat < maxBeats) waitForNextBeat();
-        else if (isPlaying) {
+        else {
             setIsPlaying(false);
             setCurrentBeat(0);
         }
-    }, [isPlaying, currentBeat, maxBeats, rhythmicFigures, bpm, goToNextBeat]);
+    }, [isPlaying, currentBeat, maxBeats, rhythmicFigures, bpm]);
+
+    function handlePlayPause() {
+        setIsPlaying(!isPlaying);
+    }
 
     function handleNewBeat() {
         if (maxBeats < MAX_BEATS) {
@@ -70,11 +70,6 @@ function MainPage(): JSX.Element {
             setMaxBeats(maxBeats - 1);
             setRhythmicFigures(rhythmicFigures.slice(0, rhythmicFigures.length - 1));
         }
-    }
-
-    function handlePlayPause() {
-        setIsPlaying(!isPlaying);
-        setCurrentBeat(0);
     }
 
     return (
