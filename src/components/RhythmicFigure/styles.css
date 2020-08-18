@@ -14,7 +14,7 @@
 
 @keyframes beat {
     from {box-shadow: 0 0 1rem var(--color-contrast)}
-    to {box-shadow: revert;}
+    to {box-shadow: revert}
 }
 
 .rhythmic-figure.shining.highlighted {

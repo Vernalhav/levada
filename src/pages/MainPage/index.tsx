@@ -1,9 +1,10 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import classNames from 'classnames';
 
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
 
 import RhythmGrid from '../../components/RhythmGrid';
+import Select from '../../components/Select';
 
 import getRhythmicFigure from '../../utils/getRhythmicFigure';
 import playBeat from '../../utils/playBeat';
@@ -12,6 +13,11 @@ import './styles.css';
 
 function MainPage(): JSX.Element {
     const INIT_BPM = 100;
+    const MAX_BPM = 140;
+    const MIN_BPM = 40;
+    const BPM_STEP = 10;
+    const N_BPMS = (MAX_BPM - MIN_BPM) / BPM_STEP + 1;
+
     const INIT_MAX_BEATS = 4;
     const MAX_BEATS = 10;
     const MIN_BEATS = 4;
@@ -31,16 +37,16 @@ function MainPage(): JSX.Element {
     useEffect(() => {
         async function waitForNextBeat() {
             await playBeat(rhythmicFigures[currentBeat], bpm);
-            const nextBeat = (currentBeat + 1) % maxBeats;
+            const nextBeat = currentBeat + 1;
             setCurrentBeat(nextBeat);
         }
 
-        if (isPlaying) waitForNextBeat();
-    });
-
-    useEffect(() => {
-        setCurrentBeat(currentBeat % maxBeats);
-    }, [currentBeat, maxBeats]);
+        if (isPlaying && currentBeat < maxBeats) waitForNextBeat();
+        else if (isPlaying) {
+            setIsPlaying(false);
+            setCurrentBeat(0);
+        }
+    }, [isPlaying, currentBeat, maxBeats, rhythmicFigures, bpm]);
 
     function handleNewBeat() {
         if (maxBeats < MAX_BEATS) {
@@ -57,6 +63,7 @@ function MainPage(): JSX.Element {
     }
 
     function handlePlayPause() {
+        setCurrentBeat(0);
         setIsPlaying(!isPlaying);
     }
 
@@ -80,20 +87,20 @@ function MainPage(): JSX.Element {
                         <button type="button" disabled={isPlaying || maxBeats <= MIN_BEATS} onClick={handleRemoveBeat}>
                             -
                         </button>
-                        <div className="bpm-input">
-                            <input
-                                id="tempo"
-                                min="50"
-                                max="160"
-                                type="number"
-                                value={bpm}
-                                onChange={(e: FormEvent<HTMLInputElement>) => {
-                                    const newBpm = Number(e.currentTarget.value);
-                                    if (50 <= newBpm && newBpm <= 160) setBpm(newBpm);
-                                }}
-                            />
-                            <label htmlFor="tempo">BPM</label>
-                        </div>
+                        <Select
+                            className="bpm-select"
+                            label="BPM"
+                            defaultValue={INIT_BPM}
+                            name="bpm"
+                            onChange={(e: ChangeEvent<HTMLSelectElement>) => setBpm(Number(e.currentTarget.value))}
+                            options={Array.from(Array<number>(N_BPMS).keys(), (index) => {
+                                const optValue = index * BPM_STEP + MIN_BPM;
+                                return {
+                                    optKey: optValue + '',
+                                    optLabel: optValue + '',
+                                };
+                            })}
+                        />
                     </div>
                 </div>
             </div>
