@@ -27,5 +27,9 @@
 	\override Voice.Rest.color = #white
 	\override Voice.TupletBracket.color= #white
 	\override Voice.TupletNumber.color= #white
-	c4
+	c16 c8 c16
 }
+
+% For all color changes, see Context then Layout object
+% Context reference: http://lilypond.org/doc/v2.18/Documentation/notation/contexts-explained
+% Layout obkect reference: https://lilypond.org/doc/v2.18/Documentation/internals/all-layout-objects

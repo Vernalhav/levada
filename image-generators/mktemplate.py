@@ -4,6 +4,7 @@ import sys
 def main():
     if  len(sys.argv) != 2:
         print('incorrect usage. use python3 mktemplate <figure name>')
+        return
     
     with open('template.ts') as f:
         template = f.read()

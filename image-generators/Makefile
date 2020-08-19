@@ -11,6 +11,8 @@ SOURCE_LAST_DIR=$(notdir $(OUTPUT_DIR:%/=%))
 
 TARGET=$(SOURCE:%.ly=%.png)
 
+MASTER_INDEX_PATH=../src/assets/RhythmicFigures/index.ts
+
 all: $(TARGET)
 
 $(TARGET): $(SOURCE)
@@ -18,7 +20,7 @@ $(TARGET): $(SOURCE)
 	rm -f *.eps $(SRC_NAME:%.ly=%.png)
 	mv $(SRC_NAME:%.ly=%)-*.png $(TARGET)
 
-asset: $(TARGET)
+asset: $(TARGET) mktemplate.py
 	mkdir -p $(ASSET_DIR)/$(SOURCE_LAST_DIR)
 	cp $(TARGET) $(ASSET_DIR)/$(SOURCE_LAST_DIR)
 	python3 mktemplate.py $(SRC_NAME:%.ly=%)
@@ -28,7 +30,18 @@ copy: $(COPY_MODEL)
 	mkdir -p $(DIRNAME)
 	cp $(COPY_MODEL) $(DIRNAME)/$(SRCNAME).ly
 
-.PHONY: all clean asset copy
+patchfile: patch_index.py index.ts
+	python3 patch_index.py $(SRC_NAME:%.ly=%)
+
+index.ts:
+	cp $(MASTER_INDEX_PATH) .
+
+patch: patchfile index.ts
+	patch index.ts patchfile
+	mv index.ts $(MASTER_INDEX_PATH)
+	rm patchfile
+
+.PHONY: all clean asset copy patch
 
 clean:
 	rm -f *.eps *.png

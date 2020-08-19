@@ -22,7 +22,10 @@
 	\time 4/4
 	\set Timing.beamExceptions = #'()
 	\override Voice.NoteHead.color = #white
-    \override Voice.Beam.color = #white
+	\override Voice.Beam.color = #white
 	\override Voice.Stem.color = #white
+	\override Voice.Rest.color = #white
+	\override Voice.TupletBracket.color= #white
+	\override Voice.TupletNumber.color= #white
 	c8 c8
 }
