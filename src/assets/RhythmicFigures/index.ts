@@ -3,6 +3,7 @@ import quavers from './Quavers';
 import semiquavers from './Semiquavers';
 import sixtSixtEigth from './SixtSixtEigth';
 import restSixtSixt from './RestSixtSixt';
+import triplets from './Triplets';
 
 interface RhythmElementData {
     type: string; // 'note' or 'pause'
@@ -22,6 +23,7 @@ export const RHYTHMIC_FIGURES: RhythmicFigureData = {
     semiquavers: semiquavers,
     sixtSixtEigth: sixtSixtEigth,
     restSixtSixt: restSixtSixt,
+    triplets: triplets,
 };
 
 export const RHYTHMIC_FIGURE_NAMES: string[] = Object.keys(RHYTHMIC_FIGURES);
