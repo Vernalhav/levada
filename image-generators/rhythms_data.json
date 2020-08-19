@@ -1,0 +1,15 @@
+{
+    "crotchet": {
+        "ly_rhythm": "c4",
+        "levada_rhythm": [
+            { "type": "note", "duration": "1 / 4" }
+        ]
+    },
+    "quavers": {
+        "ly_rhythm": "c8 c",
+        "levada_rhythm": [
+            { "type": "note", "duration": "1 / 8" },
+            { "type": "note", "duration": "1 / 8" }
+        ]
+    }
+}

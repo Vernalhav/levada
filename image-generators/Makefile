@@ -1,8 +1,6 @@
 # Where to save asset files with make asset
 ASSET_DIR=../src/assets/RhythmicFigures
 
-# Which file to copy from when creating a new copy
-COPY_MODEL=Triplets/triplets.ly
 
 # Not meant to be changed
 OUTPUT_DIR=$(dir $(SOURCE))
@@ -26,10 +24,6 @@ asset: $(TARGET) mktemplate.py
 	python3 mktemplate.py $(SRC_NAME:%.ly=%)
 	mv index.ts $(ASSET_DIR)/$(SOURCE_LAST_DIR)
 
-copy: $(COPY_MODEL)
-	mkdir -p $(DIRNAME)
-	cp $(COPY_MODEL) $(DIRNAME)/$(SRCNAME).ly
-
 patchfile: patch_index.py index.ts
 	python3 patch_index.py $(SRC_NAME:%.ly=%)
 
@@ -41,7 +35,4 @@ patch: patchfile index.ts
 	mv index.ts $(MASTER_INDEX_PATH)
 	rm patchfile
 
-.PHONY: all clean asset copy patch
-
-clean:
-	rm -f *.eps *.png
+.PHONY: all asset patch
