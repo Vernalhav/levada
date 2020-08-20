@@ -5,6 +5,8 @@ import sixtSixtEigth from './SixtSixtEigth';
 import restSixtSixt from './RestSixtSixt';
 import triplets from './Triplets';
 import sixtEightSixt from './SixtEightSixt';
+import triplets1Rest from './Triplets1Rest';
+import triplets3Rest from './Triplets3Rest';
 
 interface RhythmElementData {
     type: string; // 'note' or 'pause'
@@ -26,6 +28,8 @@ export const RHYTHMIC_FIGURES: RhythmicFigureData = {
     restSixtSixt: restSixtSixt,
     triplets: triplets,
     sixtEightSixt: sixtEightSixt,
+    triplets1Rest: triplets1Rest,
+    triplets3Rest: triplets3Rest,
 };
 
 export const RHYTHMIC_FIGURE_NAMES: string[] = Object.keys(RHYTHMIC_FIGURES);

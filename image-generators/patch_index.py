@@ -13,7 +13,8 @@ def main():
         figure_name = sys.argv[1]
         figure_dir = figure_name[:1].upper() + figure_name[1:]
 
-        for line in range(lines):
+        for line in lines:
+            if len(line.split()) < 1: break
             if line.split()[0] != 'import': break
             if line.split()[1] == figure_name or line.split()[2] == figure_dir:
                 print('Rhythmic figure already exists in index.ts ...aborting')

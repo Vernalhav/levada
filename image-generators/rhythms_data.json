@@ -11,5 +11,21 @@
             { "type": "note", "duration": "1 / 8" },
             { "type": "note", "duration": "1 / 8" }
         ]
+    },
+    "triplets1Rest": {
+        "ly_rhythm": "\\tuplet 3/2 {r8 c'8 c8}",
+        "levada_rhythm": [
+            { "type": "rest", "duration": "1 / 12" },
+            { "type": "note", "duration": "1 / 12" },
+            { "type": "note", "duration": "1 / 12" }
+        ]
+    },
+    "triplets3Rest": {
+        "ly_rhythm": "\\tuplet 3/2 {c'8 c8 r8}",
+        "levada_rhythm": [
+            { "type": "note", "duration": "1 / 12" },
+            { "type": "note", "duration": "1 / 12" },
+            { "type": "rest", "duration": "1 / 12" }
+        ]
     }
 }
