@@ -35,5 +35,12 @@
             { "type": "note", "duration": "1 / 12" },
             { "type": "rest", "duration": "1 / 12" }
         ]
+    },
+    "restEight": {
+        "ly_rhythm": "r8 d'8",
+        "levada_rhythm": [
+            { "type": "rest", "duration": "1 / 8" },
+            { "type": "note", "duration": "1 / 8" }
+        ]
     }
 }

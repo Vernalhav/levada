@@ -20,7 +20,7 @@ function MainPage(): JSX.Element {
     const N_BPMS = (MAX_BPM - MIN_BPM) / BPM_STEP + 1;
 
     const INIT_MAX_BEATS = 4;
-    const MAX_BEATS = 10;
+    const MAX_BEATS = 30;
     const MIN_BEATS = 4;
     const BEATS_PER_MEASURE = 4;
 
