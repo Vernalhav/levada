@@ -52,7 +52,7 @@ def main():
         rhythm_string = '\n'.join(rhythm_array)
         new_buffer = template.format(imageName=image_name, imagePath=image_path, figureName=figure_name, rhythm=rhythm_string)
 
-        with open('index.ts', 'w') as output:
+        with open('rhythmic_figure_index.ts', 'w') as output:
             output.write(new_buffer)
 
 

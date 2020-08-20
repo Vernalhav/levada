@@ -1,6 +1,6 @@
 # Where to save asset files with make asset
 ASSET_DIR=../src/assets/RhythmicFigures
-
+SOURCE=
 
 # Not meant to be changed
 OUTPUT_DIR=$(dir $(SOURCE))
@@ -11,7 +11,12 @@ TARGET=$(SOURCE:%.ly=%.png)
 
 MASTER_INDEX_PATH=../src/assets/RhythmicFigures/index.ts
 
-all: $(TARGET)
+ifeq ($(SOURCE),)
+$(info You must set the SOURCE string to be <RhythmicFigureName>/<rhythmicFigureName>)
+all:
+
+else
+all: asset patch
 
 # Creates directory, generates image and .ly from figure name
 # and generates the figure's index.ts (i.e. assets/RhythmicFigures/Quavers/index.ts)
@@ -23,10 +28,10 @@ $(TARGET): mktemplate.py
 	mv $(SRC_NAME:%.ly=%)-*.png $(TARGET)
 
 # Moves the output of mktemplate.py to the correct directory in assets/RhythmicFigures/<figure>
-asset: $(TARGET) index.ts
+asset: $(TARGET) rhythmic_figure_index.ts
 	mkdir -p $(ASSET_DIR)/$(SOURCE_LAST_DIR)
 	cp $(TARGET) $(ASSET_DIR)/$(SOURCE_LAST_DIR)
-	mv index.ts $(ASSET_DIR)/$(SOURCE_LAST_DIR)
+	mv rhythmic_figure_index.ts $(ASSET_DIR)/$(SOURCE_LAST_DIR)/index.ts
 
 # Creates patchfile to update assets/RhythmicFigures/index.ts
 patchfile: patch_index.py index.ts
@@ -42,3 +47,4 @@ patch: patchfile index.ts
 	rm patchfile
 
 .PHONY: all asset patch
+endif
