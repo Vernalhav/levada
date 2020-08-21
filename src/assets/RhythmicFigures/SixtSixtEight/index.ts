@@ -1,7 +1,7 @@
-import sixtSixtEigthImage from './sixt_sixt_eigth.png';
+import sixtSixtEightImage from './sixtSixtEight.png';
 
-const sixtSixtEigth = {
-    image: sixtSixtEigthImage,
+const sixtSixtEight = {
+    image: sixtSixtEightImage,
     rhythm: [
         { type: 'note', duration: 1 / 16 },
         { type: 'note', duration: 1 / 16 },
@@ -9,4 +9,4 @@ const sixtSixtEigth = {
     ],
 };
 
-export default sixtSixtEigth;
+export default sixtSixtEight;

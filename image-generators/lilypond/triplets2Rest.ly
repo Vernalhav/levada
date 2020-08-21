@@ -1,7 +1,7 @@
 \version "2.20.0"
 
 \paper {
-  indent=0\mm
+    indent=0\mm
 }
 
 \layout {
@@ -27,7 +27,8 @@
 	\override Voice.Rest.color = #white
 	\override Voice.TupletBracket.color= #white
 	\override Voice.TupletNumber.color= #white
-	\tuplet 3/2 {c8 c c}
+	% Variable indicating the string to insert (see rhythms_data.json)
+    \tuplet 3/2 {d'8 r8 d8}
 }
 
 % For all color changes, see Context then Layout object

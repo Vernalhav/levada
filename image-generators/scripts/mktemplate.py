@@ -29,16 +29,15 @@ def main():
             return
         
     # Writes lilypond template in correct directory
-    with open('template.ly') as f:
+    with open(os.path.join('templates', 'template.ly')) as f:
         template = f.read()
         new_buffer = template.format(ly_rhythm=ly_rhythm)
-        os.mkdir(figure_dir)
-        with open(os.path.join(figure_dir, figure_name + '.ly'), 'w') as output:
+        with open(os.path.join('lilypond', figure_name + '.ly'), 'w') as output:
             output.write(new_buffer)
 
 
     # Writes typescript template
-    with open('template.ts') as f:
+    with open(os.path.join('templates', 'template.ts')) as f:
         template = f.read()
         
         first_element = levada_rhythm[0]

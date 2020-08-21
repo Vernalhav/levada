@@ -1,13 +1,13 @@
 import crotchet from './Crotchet';
 import quavers from './Quavers';
 import semiquavers from './Semiquavers';
-import sixtSixtEigth from './SixtSixtEigth';
 import restSixtSixt from './RestSixtSixt';
-import triplets from './Triplets';
 import sixtEightSixt from './SixtEightSixt';
+import sixtSixtEight from './SixtSixtEight';
+import triplets from './Triplets';
 import triplets1Rest from './Triplets1Rest';
-import triplets3Rest from './Triplets3Rest';
 import triplets2Rest from './Triplets2Rest';
+import triplets3Rest from './Triplets3Rest';
 import restEight from './RestEight';
 import eightRest from './EightRest';
 
@@ -27,13 +27,13 @@ export const RHYTHMIC_FIGURES: RhythmicFigureData = {
     crotchet: crotchet,
     quavers: quavers,
     semiquavers: semiquavers,
-    sixtSixtEigth: sixtSixtEigth,
     restSixtSixt: restSixtSixt,
-    triplets: triplets,
     sixtEightSixt: sixtEightSixt,
+    sixtSixtEight: sixtSixtEight,
+    triplets: triplets,
     triplets1Rest: triplets1Rest,
-    triplets3Rest: triplets3Rest,
     triplets2Rest: triplets2Rest,
+    triplets3Rest: triplets3Rest,
     restEight: restEight,
     eightRest: eightRest,
 };

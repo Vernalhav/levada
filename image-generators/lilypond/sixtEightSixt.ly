@@ -1,7 +1,7 @@
 \version "2.20.0"
 
 \paper {
-  indent=0\mm
+    indent=0\mm
 }
 
 \layout {
@@ -27,5 +27,10 @@
 	\override Voice.Rest.color = #white
 	\override Voice.TupletBracket.color= #white
 	\override Voice.TupletNumber.color= #white
-	c16 c16 c16 c16
+	% Variable indicating the string to insert (see rhythms_data.json)
+    c16 c8 c16
 }
+
+% For all color changes, see Context then Layout object
+% Context reference: http://lilypond.org/doc/v2.18/Documentation/notation/contexts-explained
+% Layout obkect reference: https://lilypond.org/doc/v2.18/Documentation/internals/all-layout-objects

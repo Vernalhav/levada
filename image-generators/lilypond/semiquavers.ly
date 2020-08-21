@@ -28,7 +28,7 @@
 	\override Voice.TupletBracket.color= #white
 	\override Voice.TupletNumber.color= #white
 	% Variable indicating the string to insert (see rhythms_data.json)
-    \tuplet 3/2 {c'8 c8 r8}
+    c16 c16 c16 c16
 }
 
 % For all color changes, see Context then Layout object

@@ -1,6 +1,8 @@
 import sys
 
 
+TAB_LEN = 4
+
 def main():
     if  len(sys.argv) != 2:
         print('incorrect usage. use python3 patch_index <figure name>')
@@ -28,7 +30,7 @@ def main():
                 f'{end_import_line}a{end_import_line+1}\n',
                 f"> import {figure_name} from './{figure_dir}';\n"
                 f'{end_object_line-1}a{end_object_line+1}\n',
-                f">     {figure_name}: {figure_name},\n"
+                '> ' + 1*TAB_LEN*' ' + f"{figure_name}: {figure_name},\n"
             ]
 
             patch.writelines(patchlines)
