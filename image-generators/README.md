@@ -6,14 +6,14 @@ The intent is to be as straightforward and automated as possible, but there are 
 - The first step to create your rhythmic figure is to open up `rhythms_data.json` and add an object to the list. The object should be as follows:  
 ```
 <figure name>: {
-    ly_rhythm: <lilypond rhythm string>,
-    levada_rhythm: [
-        { type: "note" | "rest", duration: <fraction of the semibreve as string> },
+    "ly_rhythm": <lilypond rhythm string>,
+    "levada_rhythm": [
+        { "type": "note" | "rest", "duration": <fraction of the semibreve as string> },
         ...
     ]
 }
 ```  
-Lilypond rhythm string is the string with the notes/rests and their duration that will generate the desired image when sent through lilypond (see its lackluster documentation). All other configurations (colors, resolution, transparent background, file format, etc.) have been set either in `template.ly` or in `Makefile`.  
-**IMPORTANT NOTE:** figure name should be in camelCase and fraction of the semibreve should be a string, preferably with spaces between the symbols (i.e. "1 / 12") so the linter doesn't complain later.  
+    - Lilypond rhythm string is the string with the notes/rests and their duration that will generate the desired image when sent through lilypond (this [doc page](http://lilypond.org/doc/v2.20/Documentation/notation/writing-rhythms) should suffice for most simpler use cases). All other configurations (colors, resolution, transparent background, file format, etc.) have been set either in `template.ly` or in `Makefile`.  
+    - **IMPORTANT NOTE:** figure name should be in camelCase and fraction of the semibreve should be a string, preferably with spaces between the symbols (i.e. "1 / 12" for a triplet note) so the linter doesn't complain later.  
   
 - After you've defined it, use `make SOURCE=<figureName>`, where figureName is camelCase. This command will create all necessary and files directories.
