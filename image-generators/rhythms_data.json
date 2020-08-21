@@ -90,5 +90,12 @@
             { "type": "note", "duration": "1 / 8" },
             { "type": "rest", "duration": "1 / 8" }
         ]
+    },
+    "rest": {
+        "ly_rhythm": "r4",
+        "levada_rhythm": [
+            { "type": "rest", "duration": "1 / 4" }
+        ]
     }
+
 }
