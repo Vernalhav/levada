@@ -35,9 +35,17 @@
 
 #main-page .center-container .container {
     width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 3rem);
+    grid-template-areas:
+        "play play play beat"
+        "play play play beat"
+        "mute randomize bpm bpm";
+    grid-row-gap: 0.5rem;
+    grid-column-gap: 0.5rem;
 }
 
 #main-page .center-container .container button {
@@ -48,21 +56,12 @@
     align-items: center;
 }
 
-#main-page .center-container .container .btn-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 5rem;
-    margin-bottom: 0.9rem;
+#main-page .center-container .container .play-btn {
+    grid-area: play;
 }
 
-#main-page .center-container .container .btn-container > button {
-    flex-grow: 4;
-    margin-right: 0.8rem;
-}
-
-#main-page .center-container .container .btn-container .beat-btn-container {
+#main-page .center-container .container .beat-btn-container {
+    grid-area: beat;
     display: flex;
     flex-direction: column;
     max-height: 100%;
@@ -71,42 +70,36 @@
     justify-content: center;
 }
 
-#main-page .center-container .container .btn-container .beat-btn-container.is-hidden {
+#main-page .center-container .container .mute {
+    grid-area: mute;
+}
+
+#main-page .center-container .container .randomize {
+    grid-area: randomize;
+}
+
+#main-page .center-container .container .bpm {
+    grid-area: bpm;
+}
+
+#main-page .center-container .container .beat-btn-container.is-hidden {
     display: none;
 }
 
-#main-page .center-container .container .btn-container .beat-btn-container button {
+#main-page .center-container .container .beat-btn-container button {
     height: 47%;
     padding: 0;
 }
 
-#main-page .center-container .container .btn-container .beat-btn-container button + button{
+#main-page .center-container .container .beat-btn-container button + button{
     margin-top: 0.3rem;
 }
 
-#main-page .center-container .container .btn-container .beat-btn-container img {
-    width: 100%;
+#main-page .center-container .container .beat-btn-container img {
     height: 100%;
 }
 
-#main-page .center-container .container .options-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-#main-page .center-container .container .options-container button {
-    flex-grow: 1;
-    margin-right: 0.8rem;
-}
-
-#main-page .center-container .container .options-container div {
-    flex-grow: 3;
-}
-
-#main-page .center-container .container .options-container div select {
+#main-page .center-container .container div select {
     text-align-last: center;
     text-align: center;
 }

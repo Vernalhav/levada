@@ -113,47 +113,42 @@ function MainPage(): JSX.Element {
 
             <div className="center-container">
                 <div className="container">
-                    <div className="btn-container">
-                        <button type="button" onClick={isPlaying ? endGame : startGame}>
-                            {isPlaying ? 'Stop' : 'Play'}
-                        </button>
-                        <div className={classNames({ 'beat-btn-container': true, 'is-hidden': isGameActive })}>
-                            <button
-                                type="button"
-                                className="alter-beat-button"
-                                disabled={isPlaying || maxBeats >= MAX_BEATS}
-                                onClick={handleNewBeat}
-                            >
-                                <img src={upArrowIcon} alt="Add beat" />
-                            </button>
-                            <button
-                                type="button"
-                                className="alter-beat-button"
-                                disabled={isPlaying || maxBeats <= MIN_BEATS}
-                                onClick={handleRemoveBeat}
-                            >
-                                <img src={downArrowIcon} alt="Remove beat" />
-                            </button>
-                        </div>
-                    </div>
-                    <div className={classNames({ 'options-container': true, 'is-hidden': isGameActive })}>
+                    <button type="button" className="play-btn" onClick={isPlaying ? endGame : startGame}>
+                        {isPlaying ? 'Stop' : 'Play'}
+                    </button>
+                    <div className={classNames({ 'beat-btn-container': true, 'is-hidden': isGameActive })}>
                         <button
                             type="button"
-                            className="randomize-beat-button"
-                            disabled={isPlaying}
-                            onClick={handleRandomizeBeats}
+                            className="alter-beat-button"
+                            disabled={isPlaying || maxBeats >= MAX_BEATS}
+                            onClick={handleNewBeat}
                         >
-                            <img src={refreshIcon} alt="Randomize beats" />
+                            <img src={upArrowIcon} alt="Add beat" />
                         </button>
-
                         <button
-                            onClick={() => {
-                                setIsMuted(!isMuted);
-                            }}
+                            type="button"
+                            className="alter-beat-button"
+                            disabled={isPlaying || maxBeats <= MIN_BEATS}
+                            onClick={handleRemoveBeat}
                         >
-                            <img src={isMuted ? volumeOffIcon : volumeOnIcon} alt={isMuted ? 'Unmute' : 'Mute'} />
+                            <img src={downArrowIcon} alt="Remove beat" />
                         </button>
+                    </div>
 
+                    <button
+                        className="mute"
+                        onClick={() => {
+                            setIsMuted(!isMuted);
+                        }}
+                    >
+                        <img src={isMuted ? volumeOffIcon : volumeOnIcon} alt={isMuted ? 'Unmute' : 'Mute'} />
+                    </button>
+
+                    <button type="button" className="randomize" disabled={isPlaying} onClick={handleRandomizeBeats}>
+                        <img src={refreshIcon} alt="Randomize beats" />
+                    </button>
+
+                    <div className="bpm">
                         <Select
                             className="bpm-select"
                             label="BPM"
