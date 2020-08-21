@@ -12,6 +12,47 @@
             { "type": "note", "duration": "1 / 8" }
         ]
     },
+    "semiquavers": {
+        "ly_rhythm": "c16 c16 c16 c16",
+        "levada_rhythm": [
+            { "type": "note", "duration": "1 / 16" },
+            { "type": "note", "duration": "1 / 16" },
+            { "type": "note", "duration": "1 / 16" },
+            { "type": "note", "duration": "1 / 16" }
+        ]
+    },
+    "restSixtSixt": {
+        "ly_rhythm": "r8 d'16 d16",
+        "levada_rhythm": [
+            { "type": "rest", "duration": "1 / 8" },
+            { "type": "note", "duration": "1 / 16" },
+            { "type": "note", "duration": "1 / 16" }
+        ]
+    },
+    "sixtEightSixt": {
+        "ly_rhythm": "c16 c8 c16",
+        "levada_rhythm": [
+            { "type": "note", "duration": "1 / 16" },
+            { "type": "note", "duration": "1 / 8" },
+            { "type": "note", "duration": "1 / 16" }
+        ]
+    },
+    "sixtSixtEight": {
+        "ly_rhythm": "c16 c16 c8",
+        "levada_rhythm": [
+            { "type": "note", "duration": "1 / 16" },
+            { "type": "note", "duration": "1 / 16" },
+            { "type": "note", "duration": "1 / 8" }
+        ]
+    },
+    "triplets": {
+        "ly_rhythm": "\\tuplet 3/2 {c'8 c8 c8}",
+        "levada_rhythm": [
+            { "type": "note", "duration": "1 / 12" },
+            { "type": "note", "duration": "1 / 12" },
+            { "type": "note", "duration": "1 / 12" }
+        ]
+    },
     "triplets1Rest": {
         "ly_rhythm": "\\tuplet 3/2 {r8 d'8 d8}",
         "levada_rhythm": [
