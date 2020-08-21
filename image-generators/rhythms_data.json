@@ -46,7 +46,7 @@
         ]
     },
     "triplets": {
-        "ly_rhythm": "\\tuplet 3/2 {c'8 c8 c8}",
+        "ly_rhythm": "\\tuplet 3/2 {c8 c8 c8}",
         "levada_rhythm": [
             { "type": "note", "duration": "1 / 12" },
             { "type": "note", "duration": "1 / 12" },
@@ -97,5 +97,4 @@
             { "type": "rest", "duration": "1 / 4" }
         ]
     }
-
 }

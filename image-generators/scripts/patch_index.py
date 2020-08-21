@@ -1,5 +1,5 @@
 import sys
-
+import os
 
 TAB_LEN = 4
 
@@ -17,10 +17,12 @@ def main():
 
         for line in lines:
             if len(line.split()) < 1: break
-            if line.split()[0] != 'import': break
+            if line.split()[0] != 'import' and '//' not in line: break
             if line.split()[1] == figure_name or line.split()[2] == figure_dir:
-                print('Rhythmic figure already exists in index.ts ...aborting')
-                return
+                print(('Rhythmic figure already exists in index.ts ...aborting.\n'
+                        'File should be updated properly, but in the future, '
+                        f'try running make update SOURCE={figure_name} instead'))
+                return 1
 
         with open('patchfile', 'w') as patch:
             end_import_line = stray_newlines[0]
@@ -34,7 +36,10 @@ def main():
             ]
 
             patch.writelines(patchlines)
+    return 0
 
 
 if __name__ == '__main__':
-    main()
+    ret_val = main()
+    if ret_val == 1: os.remove('index.ts')
+    exit(ret_val)

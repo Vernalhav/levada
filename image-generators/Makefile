@@ -15,7 +15,7 @@ LY_TEMPLATE=templates/template.ly
 TS_TEMPLATE=templates/template.ts
 
 ifeq ($(SOURCE),)
-$(info You must set the SOURCE string to be <RhythmicFigureName>/<rhythmicFigureName>)
+$(info You must set the SOURCE string to be <rhythmicFigureName> in camelCase)
 all:
 
 else
@@ -51,5 +51,7 @@ patch: patchfile index.ts
 	mv index.ts $(MASTER_INDEX_PATH)
 	rm patchfile
 
-.PHONY: all asset patch
+update: asset
+
+.PHONY: all asset patch update
 endif
