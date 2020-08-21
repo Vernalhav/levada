@@ -40,7 +40,7 @@ function MainPage(): JSX.Element {
     });
 
     const [isPlaying, setIsPlaying] = useState(false); // Determines whether or not the main rhythm is playing
-    const [isGameActive, setIsGameActive] = useState(false); // Determines whether or not the rhythm or initial measures are playing
+    const [isCountingDown, setisCountingDown] = useState(false); // Determines whether or not the metronome is playing
 
     const [enableHighlighting, setEnableHighlighting] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
@@ -64,17 +64,17 @@ function MainPage(): JSX.Element {
 
     async function startGame() {
         cancelPlayBeat(false);
-        setIsGameActive(true);
+        setisCountingDown(true);
         await playInitialMeasure();
         setEnableHighlighting(true);
         setIsPlaying(true); // Actually starts rhythm loop
+        setisCountingDown(false);
     }
 
     function endGame() {
         cancelPlayBeat(true);
         setEnableHighlighting(false);
         setIsPlaying(false);
-        setIsGameActive(false);
         setCurrentBeat(0);
     }
 
@@ -107,28 +107,31 @@ function MainPage(): JSX.Element {
 
     return (
         <div id="main-page">
-            <header className={classNames({ 'is-hidden': isGameActive })}>
+            <header>
                 <img src={levadaLogo} alt="logo Levada" />
             </header>
 
             <div className="center-container">
                 <div className="container">
-                    <button type="button" className="play-btn" onClick={isPlaying ? endGame : startGame}>
+                    <button
+                        type="button"
+                        className="play-btn"
+                        disabled={isCountingDown}
+                        onClick={isPlaying ? endGame : startGame}
+                    >
                         {isPlaying ? 'Stop' : 'Play'}
                     </button>
-                    <div className={classNames({ 'beat-btn-container': true, 'is-hidden': isGameActive })}>
+                    <div className={classNames({ 'beat-btn-container': true })}>
                         <button
                             type="button"
-                            className="alter-beat-button"
-                            disabled={isPlaying || maxBeats >= MAX_BEATS}
+                            disabled={isCountingDown || isPlaying || maxBeats >= MAX_BEATS}
                             onClick={handleNewBeat}
                         >
                             <img src={upArrowIcon} alt="Add beat" />
                         </button>
                         <button
                             type="button"
-                            className="alter-beat-button"
-                            disabled={isPlaying || maxBeats <= MIN_BEATS}
+                            disabled={isCountingDown || isPlaying || maxBeats <= MIN_BEATS}
                             onClick={handleRemoveBeat}
                         >
                             <img src={downArrowIcon} alt="Remove beat" />
@@ -137,6 +140,7 @@ function MainPage(): JSX.Element {
 
                     <button
                         className="mute"
+                        disabled={isCountingDown || isPlaying}
                         onClick={() => {
                             setIsMuted(!isMuted);
                         }}
@@ -144,7 +148,12 @@ function MainPage(): JSX.Element {
                         <img src={isMuted ? volumeOffIcon : volumeOnIcon} alt={isMuted ? 'Unmute' : 'Mute'} />
                     </button>
 
-                    <button type="button" className="randomize" disabled={isPlaying} onClick={handleRandomizeBeats}>
+                    <button
+                        type="button"
+                        className="randomize"
+                        disabled={isCountingDown || isPlaying}
+                        onClick={handleRandomizeBeats}
+                    >
                         <img src={refreshIcon} alt="Randomize beats" />
                     </button>
 
@@ -153,6 +162,7 @@ function MainPage(): JSX.Element {
                             className="bpm-select"
                             label="BPM"
                             defaultValue={INIT_BPM}
+                            disabled={isCountingDown || isPlaying}
                             name="bpm"
                             onChange={(e: ChangeEvent<HTMLSelectElement>) => setBpm(Number(e.currentTarget.value))}
                             options={Array.from(Array<number>(N_BPMS).keys(), (index) => {
