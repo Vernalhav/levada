@@ -22,11 +22,11 @@ all: asset patch
 # NOTE: FIGURE NAME MUST BE PRESET IN rhythms_data.json!
 $(RHYTHM_IMG): mktemplate.py
 	python3 mktemplate.py $(SRC_NAME)
-	lilypond -dclip-systems -dpixmap-format=pngalpha --png -dresolution=200 $(SOURCE)
-	# Lilypond creates an A4 image in the output directory that doesn't interest us.
-	# We want the snippet that is created in the current directory to be renamed to the target image
+	lilypond -dclip-systems -dpixmap-format=pngalpha --png -dresolution=200 $(OUTPUT_DIR)/$(SOURCE).ly
 	rm -f *.eps $(RHYTHM_IMG)
 	mv $(SRC_NAME)-*.png $(RHYTHM_IMG)
+# Lilypond creates an A4 image in the output directory that doesn't interest us.
+# We want the snippet that is created in the current directory to be renamed to the target image
 
 # Moves the output of mktemplate.py to the correct directory in assets/RhythmicFigures/<figure>
 asset: $(RHYTHM_IMG) rhythmic_figure_index.ts
