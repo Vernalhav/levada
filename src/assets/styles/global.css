@@ -1,7 +1,8 @@
 :root {
     --color-background: #2F2F2F;
     --color-contrast: #FFFFFF;
-    --color-secondary: #3A7D44;
+    --color-secondary: #346e3c;
+    --color-secondary-hover: #3A7D44;
     --color-tertiary: #B7245C;
     --color-quaternary: #A11692;
     --color-button-disabled: #c2c2c2c0;
@@ -67,9 +68,12 @@ button {
     padding: 1rem;
     border: none;
     background-color: var(--color-secondary);
-    transition: background-color 0.2s;
-    transition: opacity 0.2s;
+    transition: background-color 0.2s, opacity 0.2s;
     cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--color-secondary-hover);
 }
 
 button:disabled {
