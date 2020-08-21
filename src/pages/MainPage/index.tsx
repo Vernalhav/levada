@@ -92,7 +92,13 @@ function MainPage(): JSX.Element {
         }
     }
 
-    function handleRandomizeBeats() {}
+    function handleRandomizeBeats() {
+        setRhythmicFigures(
+            rhythmicFigures.map(() => {
+                return getRhythmicFigure();
+            }),
+        );
+    }
 
     async function playInitialMeasure() {
         const beat = getBeatSound(bpm);
