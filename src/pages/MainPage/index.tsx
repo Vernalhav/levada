@@ -2,6 +2,11 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 import classNames from 'classnames';
 
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
+import refreshIcon from '../../assets/images/icons/refresh.svg';
+import upArrowIcon from '../../assets/images/icons/up_arrow.svg';
+import downArrowIcon from '../../assets/images/icons/down_arrow.svg';
+import volumeOnIcon from '../../assets/images/icons/volume_on.svg';
+import volumeOffIcon from '../../assets/images/icons/volume_off.svg';
 
 import RhythmGrid from '../../components/RhythmGrid';
 import Select from '../../components/Select';
@@ -38,10 +43,11 @@ function MainPage(): JSX.Element {
     const [isGameActive, setIsGameActive] = useState(false); // Determines whether or not the rhythm or initial measures are playing
 
     const [enableHighlighting, setEnableHighlighting] = useState(false);
+    const [isMuted, setIsMuted] = useState(false);
 
     useEffect(() => {
         async function waitForNextBeat() {
-            await playBeat(rhythmicFigures[currentBeat], bpm);
+            await playBeat(rhythmicFigures[currentBeat], bpm, isMuted);
             const nextBeat = currentBeat + 1;
             setCurrentBeat((prevState) => {
                 // This approach causes the visual bug to occur only if
@@ -54,7 +60,7 @@ function MainPage(): JSX.Element {
 
         if (isPlaying && currentBeat < maxBeats) waitForNextBeat();
         else if (isPlaying) endGame();
-    }, [isPlaying, currentBeat, maxBeats, rhythmicFigures, bpm]);
+    }, [isPlaying, currentBeat, maxBeats, rhythmicFigures, bpm, isMuted]);
 
     async function startGame() {
         cancelPlayBeat(false);
@@ -86,6 +92,8 @@ function MainPage(): JSX.Element {
         }
     }
 
+    function handleRandomizeBeats() {}
+
     async function playInitialMeasure() {
         const beat = getBeatSound(bpm);
 
@@ -109,14 +117,43 @@ function MainPage(): JSX.Element {
                         <button type="button" onClick={isPlaying ? endGame : startGame}>
                             {isPlaying ? 'Stop' : 'Play'}
                         </button>
+                        <div className={classNames({ 'beat-btn-container': true, 'is-hidden': isGameActive })}>
+                            <button
+                                type="button"
+                                className="alter-beat-button"
+                                disabled={isPlaying || maxBeats >= MAX_BEATS}
+                                onClick={handleNewBeat}
+                            >
+                                <img src={upArrowIcon} alt="Add beat" />
+                            </button>
+                            <button
+                                type="button"
+                                className="alter-beat-button"
+                                disabled={isPlaying || maxBeats <= MIN_BEATS}
+                                onClick={handleRemoveBeat}
+                            >
+                                <img src={downArrowIcon} alt="Remove beat" />
+                            </button>
+                        </div>
                     </div>
-                    <div className={classNames({ 'btn-container': true, 'is-hidden': isGameActive })}>
-                        <button type="button" disabled={isPlaying || maxBeats >= MAX_BEATS} onClick={handleNewBeat}>
-                            +
+                    <div className={classNames({ 'options-container': true, 'is-hidden': isGameActive })}>
+                        <button
+                            type="button"
+                            className="randomize-beat-button"
+                            disabled={isPlaying}
+                            onClick={handleRandomizeBeats}
+                        >
+                            <img src={refreshIcon} alt="Randomize beats" />
                         </button>
-                        <button type="button" disabled={isPlaying || maxBeats <= MIN_BEATS} onClick={handleRemoveBeat}>
-                            -
+
+                        <button
+                            onClick={() => {
+                                setIsMuted(!isMuted);
+                            }}
+                        >
+                            <img src={isMuted ? volumeOffIcon : volumeOnIcon} alt={isMuted ? 'Unmute' : 'Mute'} />
                         </button>
+
                         <Select
                             className="bpm-select"
                             label="BPM"

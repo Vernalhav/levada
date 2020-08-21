@@ -25,7 +25,12 @@ export function getBeatSound(tempo = 100): HTMLAudioElement {
  * @param tempo amount of beats per minute
  * @param beatUnit note value of a beat. (i.e. 4 in 3/4 time)
  */
-export default async function playBeat(rhythmicFigure: string, tempo: number, beatUnit = 4): Promise<void> {
+export default async function playBeat(
+    rhythmicFigure: string,
+    tempo: number,
+    isMuted = false,
+    beatUnit = 4,
+): Promise<void> {
     //console.log(`Playing ${rhythmicFigure}...`);
     const rhythm = RHYTHMIC_FIGURES[rhythmicFigure].rhythm;
 
@@ -42,7 +47,7 @@ export default async function playBeat(rhythmicFigure: string, tempo: number, be
         const elementLength = 60000 * (beatFraction / tempo);
 
         if (i === 0) beat.play();
-        if (rhythmElement.type === 'note') snap.play();
+        if (rhythmElement.type === 'note' && !isMuted) snap.play();
 
         await sleep(elementLength);
     }
