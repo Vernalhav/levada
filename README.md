@@ -44,7 +44,7 @@ On Firefox, the audio doesn't play in sync or at all on BPMs > 60. I really don'
     │   └── ...
     └── utils                   # Utility functions (playBeat is here!)
 ```  
-The main logic of the application is contained in [the main page](/src/pages/mainPage.tsx), as it controls all other events.
+The main logic of the application is contained in [pages/MainPage/index.tsx](/src/pages/MainPage/index.tsx), as it controls all other events.
 
 # TODO:  
 - Scoring system!!  
