@@ -1,4 +1,4 @@
-![levada logo]("./src/assets/images/levada-logo-black.svg")
+<img src="/src/assets/images/levada-logo-black.svg" height="200px"/>
 
 This project aims to be a website in which you can practice your rhythmic solfège through simple
 one-beat rhythmic figures.  
@@ -8,7 +8,7 @@ Sight reading sheet music is a daunting task. Not only do you need to worry abou
 Currently the site is in its barest-bones version possible, but it's enough to start practicing!  
 
 # Screenshots  
-![Desktop screenshot]("./screenshots/desktop_screenshot.png") | ![Mobile screenshot]("./screenshots/mobile_screenshot.png")  
+![Desktop screenshot](/screenshots/desktop_screenshot.png) | ![Mobile screenshot](/screenshots/mobile_screenshot.png)  
 --------------------------------------------------------------|------------------------------------------------------------- 
 # Browser Support  
 Chrome | Edge | Firefox  
