@@ -1,5 +1,6 @@
 #rhythm-grid {
     width: 100vw;
+    height: 100%;
     display: flex;
     justify-content: center;
 }
@@ -13,6 +14,7 @@
     padding-bottom: 1.3rem;
     column-gap: 0.9rem;
     row-gap: 0.5rem;
+    grid-auto-rows: max-content;
     grid-template-columns: repeat(2, 1fr);
 }
 

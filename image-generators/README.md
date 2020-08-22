@@ -4,7 +4,7 @@ The intent is to be as straightforward and automated as possible, but there are 
 
 # Usage  
 - The first step to create your rhythmic figure is to open up `rhythms_data.json` and add an object to the list. The object should be as follows:  
-```
+```json
 <figure name>: {
     "ly_rhythm": <lilypond rhythm string>,
     "levada_rhythm": [
