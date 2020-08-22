@@ -6,6 +6,12 @@ one-beat rhythmic figures.
 # Overview  
 Sight reading sheet music is a daunting task. Not only do you need to worry about key signatures, accidentals, chords, articulations, but also about rhythm! This project emerged as a result of my journey trying to be a better musician and wanting a good way to practice understanding the most common rhythmic figures. The project was heavily inspired by [Saher Galt's videos](https://www.youtube.com/watch?v=Y5_27Gc28ls&list=PLL_-wssODcBPiAtEQYgAMWLj2WJdMvYlm) on rhythm.  
 Currently the site is in its barest-bones version possible, but it's enough to start practicing!  
+1. Use the add or remove beats button to specify the desired amount of beats  
+2. Set the BPM to the desired amount  
+3. Click the randomize button until a sequence you're happy with appears  
+4. Click the mute button  
+5. Play the sequence and click whenever you think the note should be  
+6. Unmute, play the sequence again and check your progress :)  
 
 # Screenshots  
 ![Desktop screenshot](/screenshots/desktop_screenshot.png) | ![Mobile screenshot](/screenshots/mobile_screenshot.png)  
