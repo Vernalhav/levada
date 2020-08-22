@@ -28,4 +28,11 @@ Tested on Chrome, Edge and Firefox. Firefox's audio is janky so it's not ideal t
     ├── pages
     │   └── ...
     └── utils
-```
+```  
+# TODO:  
+    Better firefox support  
+    Remove rhythmic figure  
+    Fix first-beat stop bug  
+    Select only a subset of rhythmic figures to appear  
+    Play multi-beat rhythmic figures (and display them in a different way)  
+    Scoring system!!  
