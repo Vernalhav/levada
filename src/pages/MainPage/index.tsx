@@ -49,11 +49,12 @@ function MainPage(): JSX.Element {
         async function waitForNextBeat() {
             await playBeat(rhythmicFigures[currentBeat], bpm, isMuted);
             const nextBeat = currentBeat + 1;
+
+            // This is required in case the user stops the playback
+            // early and the beat's value is not updated properly,
+            // since prevState will always contain the most updated value
             setCurrentBeat((prevState) => {
-                // This approach causes the visual bug to occur only if
-                // the user pauses on the first beat. If there is a better
-                // way to avoid this issue, please open a pull request :)
-                if (nextBeat !== prevState + 1) return 0;
+                if (nextBeat !== prevState + 1) return 0; // In case the user stopped playing
                 return nextBeat;
             });
         }
@@ -63,6 +64,7 @@ function MainPage(): JSX.Element {
     }, [isPlaying, currentBeat, maxBeats, rhythmicFigures, bpm, isMuted]);
 
     async function startGame() {
+        setCurrentBeat(0);
         cancelPlayBeat(false);
         setisCountingDown(true);
         await playInitialMeasure();
