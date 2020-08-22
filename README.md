@@ -8,8 +8,8 @@ Sight reading sheet music is a daunting task. Not only do you need to worry abou
 Currently the site is in its barest-bones version possible, but it's enough to start practicing!  
 
 # Screenshots  
-<img src="./screenshots/desktop_screenshot" height="400px">
-<img src="./screenshots/mobile_screenshot" height="400px">
+<img src="./screenshots/desktop_screenshot.png" height="400px">
+<img src="./screenshots/mobile_screenshot.png" height="400px">
 
 # Browser Support  
 Chrome | Edge | Firefox  
