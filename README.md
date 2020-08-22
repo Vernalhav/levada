@@ -4,33 +4,38 @@ This project aims to be a website in which you can practice your rhythmic solfè
 one-beat rhythmic figures.  
   
 # Overview  
-Sight reading sheet music is a daunting task. Not only do you need to worry about key signatures, accidentals, chords, articulations, but also about rhythm! This project emerged as a result of my journey trying to be a better musician and wanting a good way to practice understanding the most common rhythmic figures. I was heavily inspired by [Saher Galt's videos](https://www.youtube.com/watch?v=Y5_27Gc28ls&list=PLL_-wssODcBPiAtEQYgAMWLj2WJdMvYlm) on rhythm.  
-Currently the site is in its barest-bones version possible, but I think it's quite enough to start practicing!
+Sight reading sheet music is a daunting task. Not only do you need to worry about key signatures, accidentals, chords, articulations, but also about rhythm! This project emerged as a result of my journey trying to be a better musician and wanting a good way to practice understanding the most common rhythmic figures. The project was heavily inspired by [Saher Galt's videos](https://www.youtube.com/watch?v=Y5_27Gc28ls&list=PLL_-wssODcBPiAtEQYgAMWLj2WJdMvYlm) on rhythm.  
+Currently the site is in its barest-bones version possible, but it's enough to start practicing!
 
-Tested on Chrome, Edge and Firefox. Firefox's audio is janky so it's not ideal to view through there.  
+# Browser Support  
+Chrome | Edge | Firefox  
+-------|------|-------  
+Yes | Yes | No  
+On Firefox, the audio doesn't play in sync or at all on BPMs > 60. I really don't know how to fix this issue, so a pull request would be greatly appreciated! Any comments can be made on the relevant issue. Feel free to test this in other browsers and update this README :)  
   
 # Project Structure  
 ```bash
-├── image-generators
-│   ├── lilypond
-│   ├── scripts
-│   └── templates
-├── public
-└── src
-    ├── assets
-    │   ├── RhythmicFigures
+├── image-generators            # All automation to generate the rhythmic figure images and specify the way they will be played 
+│   ├── lilypond                # Rhythmic figures' lilypond files. This directory is completely optional.
+│   ├── scripts                 # Python scripts that build and patch the corresponding template and index files
+│   └── templates               # Lilypond and typescript template common to all rhythmic figures
+├── public                      # Basic HTML and website icon.
+└── src                         
+    ├── assets                  
+    │   ├── RhythmicFigures     # All rhythmic figure images and rhythm specifications (as per image-generators/rhythms_data.json)
     │   │   └─── ...
-    │   ├── images
-    │   ├── sounds
-    │   └── styles
-    ├── components
+    │   ├── images              # Icons and general purpose images
+    │   ├── sounds              # Metronome beat and snap sounds
+    │   └── styles              # Global CSS styling
+    ├── components              # React components
     │   └── ...
-    ├── pages
+    ├── pages                   # React elements that correspond to each page
     │   └── ...
-    └── utils
+    └── utils                   # Utility functions (playBeat is here!)
 ```  
 # TODO:  
     Better firefox support  
+    Componentize buttons container  
     Remove rhythmic figure  
     Fix first-beat stop bug  
     Select only a subset of rhythmic figures to appear  

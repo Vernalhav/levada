@@ -3,7 +3,7 @@ This is the place where we create new Rhythmic Figures and add them to the main 
 The intent is to be as straightforward and automated as possible, but there are a few caveats which I hope will be improved in the future.  
 
 # Usage  
-- The first step to create your rhythmic figure is to open up `rhythms_data.json` and add an object to the list. The object should be as follows:  
+1. The first step to create your rhythmic figure is to open up `rhythms_data.json` and add an object to the list. The object should be as follows:  
 ```jsonc
 "figure name": {
     "ly_rhythm": "lilypond_rhythm_string",
@@ -19,4 +19,4 @@ The intent is to be as straightforward and automated as possible, but there are 
     - Type is either "note" or "rest"  
     - Duration is a fraction written as a string, preferably with spaces so that the linter doesn't complain (i.e. "1 / 8" for a quaver)  
   
-- After you've defined it, use `make SOURCE=<figureName>`, where figureName is the figure name defined in the JSON file. This command will create all necessary and files directories and should be already up on the website upon reload.
+2. After you've defined it, use `make SOURCE=<figureName>`, where figureName is the figure name defined in the JSON file. This command will create all necessary and files directories and should be already up on the website upon reload.
