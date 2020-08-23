@@ -20,9 +20,12 @@ Currently the site is in its barest-bones version possible, but it's enough to s
 Platform| Chrome | Edge | Firefox | Safari  
 ---------|-------|------|---------|-------  
 Computer | Yes | Yes | No | Untested  
-iOS      | No  | N/A   | Untested  | No  
+iOS      | No  | Untested   | Untested  | No  
 Android  | Untested | Untested | Untested | Untested  
-On Firefox, the audio doesn't play in sync or at all on BPMs > 60. I really don't know how to fix this issue, so a pull request would be greatly appreciated! Any comments can be made on the relevant issue. Feel free to test this in other browsers and update this README :)  
+
+On Firefox, the audio doesn't play in sync or at all on BPMs > 60. I really don't know how to fix this issue, so a pull request would be greatly appreciated! Any comments can be made on the relevant issue.  
+On iOS, both in Safari and in Chrome, the grid is not aligned properly and the sound is not playing correctly at all.  
+Feel free to test this in other browsers and update this README :)  
   
 # Project Structure  
 ```bash
@@ -63,7 +66,8 @@ Feedback is ALWAYS appreciated!
 - Select only a subset of rhythmic figures to appear  
 - Componentize buttons container  
 - Refactor mainPage's game logic  
-- Better firefox support  
+- If possible, fix Firefox and iOS audio issues  
+- Fix mobile layout  
 - Remove rhythmic figure to image-generators' make  
 - Better parsing of dotted notes in image-generators/rhythms_data.json  
 - Play multi-beat rhythmic figures (and possibly display them in a different way)  
