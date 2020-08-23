@@ -17,10 +17,11 @@ Currently the site is in its barest-bones version possible, but it's enough to s
 ![Desktop screenshot](/screenshots/desktop_screenshot.png) | ![Mobile screenshot](/screenshots/mobile_screenshot.png)  
 --------------------------------------------------------------|------------------------------------------------------------- 
 # Browser Support  
-Chrome | Edge | Firefox  
--------|------|-------  
-Yes | Yes | No  
-  
+Platform| Chrome | Edge | Firefox | Safari  
+---------|-------|------|---------|-------  
+Computer | Yes | Yes | No | Untested  
+iOS      | No  | N/A   | Untested  | No  
+Android  | Untested | Untested | Untested | Untested  
 On Firefox, the audio doesn't play in sync or at all on BPMs > 60. I really don't know how to fix this issue, so a pull request would be greatly appreciated! Any comments can be made on the relevant issue. Feel free to test this in other browsers and update this README :)  
   
 # Project Structure  
