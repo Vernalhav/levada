@@ -18,5 +18,6 @@ The intent is to be as straightforward and automated as possible, but there are 
 - Levada rhythm is an array of one or more rhythmic elements composed of type and duration. The sum of all durations should be 1/4 because we're considering the quaver to be one beat (n/4 time signature). This is what's used to play the audio (see [playBeat.ts](/src/utils/playBeat.ts))  
     - Type is either "note" or "rest"  
     - Duration is a fraction written as a string, preferably with spaces so that the linter doesn't complain (i.e. "1 / 8" for a quaver)  
+        - If you wish to add a dotted note, you can either write for instance "1 / 8 + 1 / 4" or write directly "3 / 8"  
   
 2. After you've defined it, use `make SOURCE=<figureName>`, where figureName is the figure name defined in the JSON file. This command will create all necessary and files directories and should be already up on the website upon reload.

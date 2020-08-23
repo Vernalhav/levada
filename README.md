@@ -44,14 +44,26 @@ On Firefox, the audio doesn't play in sync or at all on BPMs > 60. I really don'
     │   └── ...
     └── utils                   # Utility functions (playBeat is here!)
 ```  
-The main logic of the application is contained in [pages/MainPage/index.tsx](/src/pages/MainPage/index.tsx), as it controls all other events.
+The main logic of the application is contained in [pages/MainPage/index.tsx](/src/pages/MainPage/index.tsx), as it controls all other events.  
+The sound-playing logic is in [utils/playBeat.tsx](/src/utils/playBeat.tsx).  
+All of the process of generating new rhythmic figures and their images and adding them to the site can be found in [image-generators](/image-generators) and better explained on its README.  
+
+# Contributing  
+If you wish to contribute to this project, thank you! You're more than welcome :)  
+If you have any questions about the project's code and structure, please open an issue and I'll reply as soon as possible. There should be a few issues opened, so check if there are any that you would like to work on. Don't be shy on joining the discussion even if the issue is already assigned to someone.  
+To contribute, fork the project, open up a new branch (preferably with a semantic name) and then when you're done, open up a Pull Request. I'll review them as soon as possible, so you won't be left waiting long for a merge or for feedback.  
+To set up the development environment, simply run `npm install` on the root directory and then `npm start`.  
+  
+This is my first React project, so if you see any anti-patterns, hacky solutions or things that could be improved in general, please open an issue with the \[Improvement\] tag! I'm always looking for ways to make my code better :)  
+Feedback is ALWAYS appreciated!  
 
 # TODO:  
 - Scoring system!!  
 - Select only a subset of rhythmic figures to appear  
 - Componentize buttons container  
-- Better firefox support  
 - Refactor mainPage's game logic  
+- Better firefox support  
 - Remove rhythmic figure to image-generators' make  
-- Play multi-beat rhythmic figures (and display them in a different way)  
-All can be found detailed in the Issues tab.
+- Better parsing of dotted notes in image-generators/rhythms_data.json  
+- Play multi-beat rhythmic figures (and possibly display them in a different way)  
+All these issues are better detailed in the Issues tab. Feel free to contribute!

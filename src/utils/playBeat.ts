@@ -23,6 +23,7 @@ export function getBeatSound(tempo = 100): HTMLAudioElement {
  *
  * @param rhythmicFigure name of the rhythmic figure as per RHYTHMIC_FIGURE keys (see assets/RhythmicFigures/index.ts)
  * @param tempo amount of beats per minute
+ * @param isMuted whether to play the snaps or only the beats
  * @param beatUnit note value of a beat. (i.e. 4 in 3/4 time)
  */
 export default async function playBeat(
@@ -31,10 +32,9 @@ export default async function playBeat(
     isMuted = false,
     beatUnit = 4,
 ): Promise<void> {
-    //console.log(`Playing ${rhythmicFigure}...`);
     const rhythm = RHYTHMIC_FIGURES[rhythmicFigure].rhythm;
 
-    // Heuristic so that the audio doesn't get overlaid on faster BPMs
+    // Heuristic so that the audio doesn't get overlapped on faster BPMs
     beat.playbackRate = tempo >= 60 ? tempo / 20 : 1;
     snap.playbackRate = tempo >= 60 ? tempo / 20 : 1;
 
