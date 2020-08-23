@@ -17,7 +17,7 @@ Currently the site is in its barest-bones version possible, but it's enough to s
 ![Desktop screenshot](/screenshots/desktop_screenshot.png) | ![Mobile screenshot](/screenshots/mobile_screenshot.png)  
 --------------------------------------------------------------|------------------------------------------------------------- 
 # Browser Support  
-Platform              | Chrome | Edge | Firefox | Safari  
+Platform &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Chrome | Edge | Firefox | Safari  
 ---------|-------|------|---------|-------  
 Computer         | Yes | Yes | No | Untested  
 iOS              | No  | Untested   | Untested  | No  
