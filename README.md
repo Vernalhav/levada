@@ -17,11 +17,11 @@ Currently the site is in its barest-bones version possible, but it's enough to s
 ![Desktop screenshot](/screenshots/desktop_screenshot.png) | ![Mobile screenshot](/screenshots/mobile_screenshot.png)  
 --------------------------------------------------------------|------------------------------------------------------------- 
 # Browser Support  
-Platform| Chrome | Edge | Firefox | Safari  
+Platform              | Chrome | Edge | Firefox | Safari  
 ---------|-------|------|---------|-------  
-Computer | Yes | Yes | No | Untested  
-iOS      | No  | Untested   | Untested  | No  
-Android  | Untested | Untested | Untested | Untested  
+Computer         | Yes | Yes | No | Untested  
+iOS              | No  | Untested   | Untested  | No  
+Android          | Untested | Untested | Untested | Untested  
 
 On Firefox, the audio doesn't play in sync or at all on BPMs > 60. I really don't know how to fix this issue, so a pull request would be greatly appreciated! Any comments can be made on the relevant issue.  
 On iOS, both in Safari and in Chrome, the grid is not aligned properly and the sound is not playing correctly at all.  
