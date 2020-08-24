@@ -1,7 +1,7 @@
 <img src="/src/assets/images/levada-logo-black.svg" height="200px"/>
 
 This project aims to be a website in which you can practice your rhythmic solfège through simple
-one-beat rhythmic figures.  
+one-beat rhythmic figures. Try out the site at https://vernalhav.github.io/levada/  
   
 # Overview  
 Sight reading sheet music is a daunting task. Not only do you need to worry about key signatures, accidentals, chords, articulations, but also about rhythm! This project emerged as a result of my journey trying to be a better musician and wanting a good way to practice understanding the most common rhythmic figures. The project was heavily inspired by [Saher Galt's videos](https://www.youtube.com/watch?v=Y5_27Gc28ls&list=PLL_-wssODcBPiAtEQYgAMWLj2WJdMvYlm) on rhythm.  
@@ -23,8 +23,8 @@ Computer         | Yes | Yes | No | Untested
 iOS              | No  | Untested   | Untested  | No  
 Android          | Untested | Untested | Untested | Untested  
 
-On Firefox, the audio doesn't play in sync or at all on BPMs > 60. I really don't know how to fix this issue, so a pull request would be greatly appreciated! Any comments can be made on the relevant issue.  
-On iOS, both in Safari and in Chrome, the grid is not aligned properly and the sound is not playing correctly at all.  
+On Firefox, the audio doesn't play in sync or at all on BPMs > 60. I really don't know how to fix this issue, so a pull request would be greatly appreciated! Any comments can be made on the relevant issue. See [Issue #4](https://github.com/Vernalhav/levada/issues/4)  
+On iOS, both in Safari and in Chrome, the grid is not aligned properly and the sound is not playing correctly at all. See [Issue #4](https://github.com/Vernalhav/levada/issues/4) and [Issue #5](https://github.com/Vernalhav/levada/issues/5)  
 Feel free to test this in other browsers and update this README :)  
   
 # Project Structure  
@@ -42,9 +42,9 @@ Feel free to test this in other browsers and update this README :)
     │   ├── images              # Icons and general purpose images
     │   ├── sounds              # Metronome beat and snap sounds
     │   └── styles              # Global CSS styling
-    ├── components              # React components
+    ├── components              # React components and their individual CSS
     │   └── ...
-    ├── pages                   # React elements that correspond to each page
+    ├── pages                   # React elements that correspond to each page and their individual CSS
     │   └── ...
     └── utils                   # Utility functions (playBeat is here!)
 ```  
