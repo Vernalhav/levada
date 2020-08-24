@@ -1,0 +1,83 @@
+:root {
+    --color-background: #2F2F2F;
+    --color-contrast: #FFFFFF;
+    --color-secondary: #346e3c;
+    --color-secondary-hover: #3A7D44;
+    --color-tertiary: #B7245C;
+    --color-quaternary: #A11692;
+    --color-button-disabled: #c2c2c2c0;
+    --color-beat-played: #323232;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div,
+img,
+button,
+label {
+    user-select: none; /* standard syntax */
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+body,
+#root {
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    color: var(--color-contrast);
+    background: var(--color-background);
+}
+
+body,
+button,
+textarea {
+    font-weight: 400;
+    font-family: 'Noto Sans TC';
+    font-size: 1.6rem;
+    text-align: center;
+    color: var(--color-contrast);
+}
+
+input {
+    font-weight: 400;
+    font-family: 'Noto Sans TC';
+    font-size: 1.6rem;
+    text-align: center;
+    color: var(--color-contrast);
+    border: none;
+    background: none;
+    border-bottom: 1px solid var(--color-contrast);
+}
+
+button {
+    padding: 1rem;
+    border: none;
+    background-color: var(--color-secondary);
+    transition: background-color 0.2s, opacity 0.2s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--color-secondary-hover);
+}
+
+button:disabled {
+    background: var(--color-button-disabled);
+    cursor: not-allowed;
+    opacity: 0.4;
+}
