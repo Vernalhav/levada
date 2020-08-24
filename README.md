@@ -10,7 +10,7 @@ Currently the site is in its barest-bones version possible, but it's enough to s
 2. Set the BPM to the desired amount  
 3. Click the randomize button until a sequence you're happy with appears  
 4. Click the mute button  
-5. Play the sequence and click whenever you think the note should be played  
+5. Play the sequence and click anywhere below the button menu whenever you think the note should be played.  
 6. Unmute, play the sequence again and check your progress :)  
 
 # Screenshots  
