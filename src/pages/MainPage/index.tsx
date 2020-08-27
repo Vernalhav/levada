@@ -30,7 +30,7 @@ function MainPage(): JSX.Element {
     });
 
     const [isPlaying, setIsPlaying] = useState(false); // Determines whether or not the main rhythm is playing
-    const [isCountingDown, setisCountingDown] = useState(false); // Determines whether or not the metronome is playing
+    const [isCountingDown, setisCountingDown] = useState(false); // Determines whether or not the initial metronome is playing
 
     const [enableHighlighting, setEnableHighlighting] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
@@ -116,7 +116,7 @@ function MainPage(): JSX.Element {
             <ControlsMenu
                 isPlaying={isPlaying}
                 isPlayDisabled={isCountingDown}
-                handlePlayClick={() => (isPlaying ? endGame : startGame)}
+                handlePlayClick={isPlaying ? endGame : startGame}
                 isAddBeatDisabled={isCountingDown || isPlaying || maxBeats >= MAX_BEATS}
                 isRemoveBeatDisabled={isCountingDown || isPlaying || maxBeats <= MIN_BEATS}
                 handleNewBeat={handleNewBeat}
@@ -124,7 +124,7 @@ function MainPage(): JSX.Element {
                 areControlsDisabled={isCountingDown || isPlaying}
                 isMuted={isMuted}
                 handleMute={() => setIsMuted(!isMuted)}
-                handleRandomizeBeats={() => handleRandomizeBeats}
+                handleRandomizeBeats={handleRandomizeBeats}
                 setBpm={setBpm}
             />
 
