@@ -116,7 +116,11 @@ function MainPage(): JSX.Element {
     return (
         <div id="main-page">
             <header>
-                <img src={levadaLogo} alt="logo Levada" />
+                <div>
+                    <a href="https://github.com/vernalhav/levada" target="_blank" rel="noopener noreferrer">
+                        <img src={levadaLogo} alt="Levada's GitHub page link" />
+                    </a>
+                </div>
             </header>
 
             <div className="center-container">
