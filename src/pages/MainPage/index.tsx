@@ -129,25 +129,27 @@ function MainPage(): JSX.Element {
                     >
                         {isPlaying ? 'Stop' : 'Play'}
                     </button>
-                    <div className={classNames({ 'beat-btn-container': true })}>
-                        <button
-                            type="button"
-                            disabled={isCountingDown || isPlaying || maxBeats >= MAX_BEATS}
-                            onClick={handleNewBeat}
-                        >
-                            <img src={upArrowIcon} alt="Add beat" />
-                        </button>
-                        <button
-                            type="button"
-                            disabled={isCountingDown || isPlaying || maxBeats <= MIN_BEATS}
-                            onClick={handleRemoveBeat}
-                        >
-                            <img src={downArrowIcon} alt="Remove beat" />
-                        </button>
-                    </div>
 
                     <button
-                        className="mute"
+                        className="add-beat-btn"
+                        type="button"
+                        disabled={isCountingDown || isPlaying || maxBeats >= MAX_BEATS}
+                        onClick={handleNewBeat}
+                    >
+                        <img src={upArrowIcon} alt="Add beat" />
+                    </button>
+
+                    <button
+                        className="remove-beat-btn"
+                        type="button"
+                        disabled={isCountingDown || isPlaying || maxBeats <= MIN_BEATS}
+                        onClick={handleRemoveBeat}
+                    >
+                        <img src={downArrowIcon} alt="Remove beat" />
+                    </button>
+
+                    <button
+                        className={classNames({ mute: true, 'is-muted': isMuted })}
                         disabled={isCountingDown || isPlaying}
                         onClick={() => {
                             setIsMuted(!isMuted);

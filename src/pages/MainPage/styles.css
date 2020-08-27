@@ -41,8 +41,8 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 2.5rem);
     grid-template-areas:
-        "play play play beat"
-        "play play play beat"
+        "play play play add-beat"
+        "play play play remove-beat"
         "mute randomize bpm bpm";
     grid-row-gap: 0.5rem;
     grid-column-gap: 0.5rem;
@@ -61,18 +61,34 @@
     grid-area: play;
 }
 
-#main-page .center-container .container .beat-btn-container {
-    grid-area: beat;
-    display: flex;
-    flex-direction: column;
-    max-height: 100%;
-    height: 100%;
-    flex-grow: 1;
-    justify-content: center;
+#main-page .center-container .container .add-beat-btn {
+    grid-area: add-beat;
+}
+
+#main-page .center-container .container .add-beat-btn img {
+    width: 2rem;
+}
+
+#main-page .center-container .container .remove-beat-btn {
+    grid-area: remove-beat;
+}
+
+#main-page .center-container .container .remove-beat-btn img {
+    width: 2rem;
 }
 
 #main-page .center-container .container .mute {
     grid-area: mute;
+    transition-property: background-color, border;
+}
+
+#main-page .center-container .container .mute.is-muted {
+    background-color: var(--color-background);
+    border: 1.5px solid var(--color-secondary);
+}
+
+#main-page .center-container .container .mute.is-muted:hover {
+    border: 1.5px solid var(--color-contrast);
 }
 
 #main-page .center-container .container .randomize {
@@ -82,23 +98,6 @@
 #main-page .center-container .container .bpm {
     grid-area: bpm;
     align-self: center;
-}
-
-#main-page .center-container .container .beat-btn-container.is-hidden {
-    display: none;
-}
-
-#main-page .center-container .container .beat-btn-container button {
-    height: 47%;
-    padding: 0;
-}
-
-#main-page .center-container .container .beat-btn-container button + button{
-    margin-top: 0.3rem;
-}
-
-#main-page .center-container .container .beat-btn-container img {
-    height: 100%;
 }
 
 #main-page .center-container .container div select {
@@ -113,8 +112,8 @@
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(2, 2.5rem);
-        grid-template-areas: "play play beat mute bpm"
-                                "play play beat randomize bpm";
+        grid-template-areas: "play play add-beat mute bpm"
+                                "play play remove-beat randomize bpm";
         grid-row-gap: 0.5rem;
         grid-column-gap: 0.5rem;
         margin-bottom: 1rem;
