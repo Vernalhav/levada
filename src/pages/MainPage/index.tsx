@@ -1,15 +1,9 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
-import classNames from 'classnames';
+import React, { useState, useEffect } from 'react';
 
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
-import refreshIcon from '../../assets/images/icons/refresh.svg';
-import upArrowIcon from '../../assets/images/icons/up_arrow.svg';
-import downArrowIcon from '../../assets/images/icons/down_arrow.svg';
-import volumeOnIcon from '../../assets/images/icons/volume_on.svg';
-import volumeOffIcon from '../../assets/images/icons/volume_off.svg';
 
 import RhythmGrid from '../../components/RhythmGrid';
-import Select from '../../components/Select';
+import ControlsMenu from '../../components/ControlsMenu';
 
 import getRhythmicFigure from '../../utils/getRhythmicFigure';
 import playBeat, { cancelPlayBeat, getBeatSound } from '../../utils/playBeat';
@@ -18,11 +12,7 @@ import './styles.css';
 import sleep from '../../utils/sleep';
 
 function MainPage(): JSX.Element {
-    const INIT_BPM = 100;
-    const MAX_BPM = 140;
-    const MIN_BPM = 40;
-    const BPM_STEP = 10;
-    const N_BPMS = (MAX_BPM - MIN_BPM) / BPM_STEP + 1;
+    const INIT_BPM = 80;
 
     const INIT_MAX_BEATS = 4;
     const MAX_BEATS = 30;
@@ -123,73 +113,7 @@ function MainPage(): JSX.Element {
                 </div>
             </header>
 
-            <div className="center-container">
-                <div className="container">
-                    <button
-                        type="button"
-                        className="play-btn"
-                        disabled={isCountingDown}
-                        onClick={isPlaying ? endGame : startGame}
-                    >
-                        {isPlaying ? 'Stop' : 'Play'}
-                    </button>
-
-                    <button
-                        className="add-beat-btn"
-                        type="button"
-                        disabled={isCountingDown || isPlaying || maxBeats >= MAX_BEATS}
-                        onClick={handleNewBeat}
-                    >
-                        <img src={upArrowIcon} alt="Add beat" />
-                    </button>
-
-                    <button
-                        className="remove-beat-btn"
-                        type="button"
-                        disabled={isCountingDown || isPlaying || maxBeats <= MIN_BEATS}
-                        onClick={handleRemoveBeat}
-                    >
-                        <img src={downArrowIcon} alt="Remove beat" />
-                    </button>
-
-                    <button
-                        className={classNames({ mute: true, 'is-muted': isMuted })}
-                        disabled={isCountingDown || isPlaying}
-                        onClick={() => {
-                            setIsMuted(!isMuted);
-                        }}
-                    >
-                        <img src={isMuted ? volumeOffIcon : volumeOnIcon} alt={isMuted ? 'Unmute' : 'Mute'} />
-                    </button>
-
-                    <button
-                        type="button"
-                        className="randomize"
-                        disabled={isCountingDown || isPlaying}
-                        onClick={handleRandomizeBeats}
-                    >
-                        <img src={refreshIcon} alt="Randomize beats" />
-                    </button>
-
-                    <div className="bpm">
-                        <Select
-                            className="bpm-select"
-                            label="BPM"
-                            defaultValue={INIT_BPM}
-                            disabled={isCountingDown || isPlaying}
-                            name="bpm"
-                            onChange={(e: ChangeEvent<HTMLSelectElement>) => setBpm(Number(e.currentTarget.value))}
-                            options={Array.from(Array<number>(N_BPMS).keys(), (index) => {
-                                const optValue = index * BPM_STEP + MIN_BPM;
-                                return {
-                                    optKey: optValue + '',
-                                    optLabel: optValue + '',
-                                };
-                            })}
-                        />
-                    </div>
-                </div>
-            </div>
+            <ControlsMenu />
 
             <RhythmGrid
                 currentBeat={currentBeat}
