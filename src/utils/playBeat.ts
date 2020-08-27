@@ -9,13 +9,26 @@ export const beat = new Audio(beatSound);
 const snap = new Audio(snapSound);
 
 let isCancelled = true;
+const MIN_PLAYBACK_RATE = 2;
+const MAX_PLAYBACK_RATE = 4;
 
 export function cancelPlayBeat(val: boolean): void {
     isCancelled = val;
 }
 
+/**
+ * Return x if x is in range [a, b] or the
+ * closest interval extreme if it isn't
+ * @param a Lower bound
+ * @param x Clamped element
+ * @param b Upper bound
+ */
+function clamp(a: number, x: number, b: number): number {
+    return Math.min(Math.max(x, a), b);
+}
+
 export function getBeatSound(tempo = 100): HTMLAudioElement {
-    beat.playbackRate = tempo >= 60 ? tempo / 20 : 1;
+    beat.playbackRate = clamp(MIN_PLAYBACK_RATE, tempo / 20, MAX_PLAYBACK_RATE);
     return beat;
 }
 
@@ -35,9 +48,11 @@ export default async function playBeat(
     const rhythm = RHYTHMIC_FIGURES[rhythmicFigure].rhythm;
 
     // Heuristic so that the audio doesn't get overlapped on faster BPMs
-    beat.playbackRate = tempo >= 60 ? tempo / 20 : 1;
-    snap.playbackRate = tempo >= 60 ? tempo / 20 : 1;
+    beat.playbackRate = clamp(MIN_PLAYBACK_RATE, tempo / 20, MAX_PLAYBACK_RATE);
+    snap.playbackRate = clamp(MIN_PLAYBACK_RATE, tempo / 20, MAX_PLAYBACK_RATE);
 
+    beat.currentTime = 0;
+    beat.play();
     for (let i = 0; i < rhythm.length; i++) {
         if (isCancelled) return;
 
@@ -46,8 +61,10 @@ export default async function playBeat(
         const beatFraction = rhythmElement.duration * beatUnit;
         const elementLength = 60000 * (beatFraction / tempo);
 
-        if (i === 0) beat.play();
-        if (rhythmElement.type === 'note' && !isMuted) snap.play();
+        if (rhythmElement.type === 'note' && !isMuted) {
+            snap.currentTime = 0;
+            snap.play();
+        }
 
         await sleep(elementLength);
     }
