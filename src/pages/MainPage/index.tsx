@@ -113,7 +113,20 @@ function MainPage(): JSX.Element {
                 </div>
             </header>
 
-            <ControlsMenu />
+            <ControlsMenu
+                isPlaying={isPlaying}
+                isPlayDisabled={isCountingDown}
+                handlePlayClick={() => (isPlaying ? endGame : startGame)}
+                isAddBeatDisabled={isCountingDown || isPlaying || maxBeats >= MAX_BEATS}
+                isRemoveBeatDisabled={isCountingDown || isPlaying || maxBeats <= MIN_BEATS}
+                handleNewBeat={handleNewBeat}
+                handleRemoveBeat={handleRemoveBeat}
+                areControlsDisabled={isCountingDown || isPlaying}
+                isMuted={isMuted}
+                handleMute={() => setIsMuted(!isMuted)}
+                handleRandomizeBeats={() => handleRandomizeBeats}
+                setBpm={setBpm}
+            />
 
             <RhythmGrid
                 currentBeat={currentBeat}
