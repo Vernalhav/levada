@@ -40,9 +40,6 @@ function MainPage(): JSX.Element {
             await playBeat(rhythmicFigures[currentBeat], bpm, isMuted);
             const nextBeat = currentBeat + 1;
 
-            // This is required in case the user stops the playback
-            // early and the beat's value is not updated properly,
-            // since prevState will always contain the most updated value
             setCurrentBeat((prevState) => {
                 if (nextBeat !== prevState + 1) return 0; // In case the user stopped playing
                 return nextBeat;
