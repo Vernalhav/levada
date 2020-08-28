@@ -6,10 +6,10 @@ import RhythmGrid from '../../components/RhythmGrid';
 import ControlsMenu from '../../components/ControlsMenu';
 
 import getRhythmicFigure from '../../utils/getRhythmicFigure';
-import playBeat, { cancelPlayBeat, getBeatSound } from '../../utils/playBeat';
+import playBeat, { cancelPlayBeat } from '../../utils/playBeat';
+import sleep from '../../utils/sleep';
 
 import './styles.css';
-import sleep from '../../utils/sleep';
 
 function MainPage(): JSX.Element {
     const INIT_BPM = 80;
@@ -17,7 +17,7 @@ function MainPage(): JSX.Element {
     const INIT_MAX_BEATS = 4;
     const MAX_BEATS = 30;
     const MIN_BEATS = 4;
-    const BEATS_PER_MEASURE = 4;
+    // const BEATS_PER_MEASURE = 4;
 
     const [currentBeat, setCurrentBeat] = useState(0);
     const [maxBeats, setMaxBeats] = useState(INIT_MAX_BEATS);
@@ -37,7 +37,8 @@ function MainPage(): JSX.Element {
 
     useEffect(() => {
         async function waitForNextBeat() {
-            await playBeat(rhythmicFigures[currentBeat], bpm, isMuted);
+            playBeat(rhythmicFigures[currentBeat], bpm);
+            await sleep(60000 / bpm);
             const nextBeat = currentBeat + 1;
 
             setCurrentBeat((prevState) => {
@@ -52,16 +53,15 @@ function MainPage(): JSX.Element {
 
     async function startGame() {
         setCurrentBeat(0);
-        cancelPlayBeat(false);
         setisCountingDown(true);
-        await playInitialMeasure();
+        // await playInitialMeasure();
         setEnableHighlighting(true);
         setIsPlaying(true); // Actually starts rhythm loop
         setisCountingDown(false);
     }
 
     function endGame() {
-        cancelPlayBeat(true);
+        cancelPlayBeat();
         setEnableHighlighting(false);
         setIsPlaying(false);
         setCurrentBeat(0);
@@ -89,16 +89,16 @@ function MainPage(): JSX.Element {
         );
     }
 
-    async function playInitialMeasure() {
-        const beat = getBeatSound(bpm);
+    // async function playInitialMeasure() {
+    //     const beat = getBeatSound(bpm);
 
-        for (let i = 0; i < BEATS_PER_MEASURE; i++) {
-            beat.play();
-            setEnableHighlighting(true);
-            setTimeout(() => setEnableHighlighting(false), 100);
-            await sleep(60000 / bpm);
-        }
-    }
+    //     for (let i = 0; i < BEATS_PER_MEASURE; i++) {
+    //         beat.play();
+    //         setEnableHighlighting(true);
+    //         setTimeout(() => setEnableHighlighting(false), 100);
+    //         await sleep(60000 / bpm);
+    //     }
+    // }
 
     return (
         <div id="main-page">
