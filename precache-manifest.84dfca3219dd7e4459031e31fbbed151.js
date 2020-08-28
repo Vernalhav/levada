@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3d73b3fa91ebf3f0685009f0e85caaa9",
+    "revision": "695d7c70905383e6fc54a1d76c580712",
     "url": "/levada/index.html"
   },
   {
-    "revision": "f77bd9a2a1b0a8e1cf01",
-    "url": "/levada/static/css/main.412b1b8c.chunk.css"
+    "revision": "b521c16ba2bff749030b",
+    "url": "/levada/static/css/main.226189c8.chunk.css"
   },
   {
-    "revision": "4ce3879e6df72f09a526",
-    "url": "/levada/static/js/2.1c7ac990.chunk.js"
+    "revision": "94cfcc2084e2af540629",
+    "url": "/levada/static/js/2.1eadd76e.chunk.js"
   },
   {
     "revision": "5ac48c47bb3912b14c2d8de4f56d5ae8",
-    "url": "/levada/static/js/2.1c7ac990.chunk.js.LICENSE.txt"
+    "url": "/levada/static/js/2.1eadd76e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f77bd9a2a1b0a8e1cf01",
-    "url": "/levada/static/js/main.2e4286aa.chunk.js"
+    "revision": "b521c16ba2bff749030b",
+    "url": "/levada/static/js/main.470748b6.chunk.js"
   },
   {
     "revision": "40e9e20f196941fa956a",
