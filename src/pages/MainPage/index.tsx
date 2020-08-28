@@ -1,28 +1,18 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
-import classNames from 'classnames';
+import React, { useState, useEffect } from 'react';
 
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
-import refreshIcon from '../../assets/images/icons/refresh.svg';
-import upArrowIcon from '../../assets/images/icons/up_arrow.svg';
-import downArrowIcon from '../../assets/images/icons/down_arrow.svg';
-import volumeOnIcon from '../../assets/images/icons/volume_on.svg';
-import volumeOffIcon from '../../assets/images/icons/volume_off.svg';
 
 import RhythmGrid from '../../components/RhythmGrid';
-import Select from '../../components/Select';
+import ControlsMenu from '../../components/ControlsMenu';
 
 import getRhythmicFigure from '../../utils/getRhythmicFigure';
-import playBeat, { cancelPlayBeat, getBeatSound } from '../../utils/playBeat';
-
-import './styles.css';
+import playBeat, { cancelPlayBeat } from '../../utils/playBeat';
 import sleep from '../../utils/sleep';
 
+import './styles.css';
+
 function MainPage(): JSX.Element {
-    const INIT_BPM = 100;
-    const MAX_BPM = 140;
-    const MIN_BPM = 40;
-    const BPM_STEP = 10;
-    const N_BPMS = (MAX_BPM - MIN_BPM) / BPM_STEP + 1;
+    const INIT_BPM = 80;
 
     const INIT_MAX_BEATS = 4;
     const MAX_BEATS = 30;
@@ -40,23 +30,19 @@ function MainPage(): JSX.Element {
     });
 
     const [isPlaying, setIsPlaying] = useState(false); // Determines whether or not the main rhythm is playing
-    const [isCountingDown, setisCountingDown] = useState(false); // Determines whether or not the metronome is playing
+    const [isCountingDown, setisCountingDown] = useState(false); // Determines whether or not the initial metronome is playing
 
     const [enableHighlighting, setEnableHighlighting] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
 
     useEffect(() => {
         async function waitForNextBeat() {
-            await playBeat(rhythmicFigures[currentBeat], bpm, isMuted);
-            const nextBeat = currentBeat + 1;
+            if (!isMuted) playBeat(rhythmicFigures[currentBeat], bpm);
+            else playBeat('rest', bpm);
+            await sleep(60000 / bpm);
 
-            // This is required in case the user stops the playback
-            // early and the beat's value is not updated properly,
-            // since prevState will always contain the most updated value
-            setCurrentBeat((prevState) => {
-                if (nextBeat !== prevState + 1) return 0; // In case the user stopped playing
-                return nextBeat;
-            });
+            const nextBeat = currentBeat + 1;
+            setCurrentBeat(nextBeat);
         }
 
         if (isPlaying && currentBeat < maxBeats) waitForNextBeat();
@@ -65,7 +51,6 @@ function MainPage(): JSX.Element {
 
     async function startGame() {
         setCurrentBeat(0);
-        cancelPlayBeat(false);
         setisCountingDown(true);
         await playInitialMeasure();
         setEnableHighlighting(true);
@@ -74,7 +59,7 @@ function MainPage(): JSX.Element {
     }
 
     function endGame() {
-        cancelPlayBeat(true);
+        cancelPlayBeat();
         setEnableHighlighting(false);
         setIsPlaying(false);
         setCurrentBeat(0);
@@ -103,12 +88,10 @@ function MainPage(): JSX.Element {
     }
 
     async function playInitialMeasure() {
-        const beat = getBeatSound(bpm);
-
         for (let i = 0; i < BEATS_PER_MEASURE; i++) {
-            beat.play();
+            playBeat('rest', bpm);
             setEnableHighlighting(true);
-            setTimeout(() => setEnableHighlighting(false), 100);
+            setTimeout(() => setEnableHighlighting(false), 200);
             await sleep(60000 / bpm);
         }
     }
@@ -116,74 +99,27 @@ function MainPage(): JSX.Element {
     return (
         <div id="main-page">
             <header>
-                <img src={levadaLogo} alt="logo Levada" />
+                <div>
+                    <a href="https://github.com/vernalhav/levada" target="_blank" rel="noopener noreferrer">
+                        <img src={levadaLogo} alt="Levada's GitHub page link" />
+                    </a>
+                </div>
             </header>
 
-            <div className="center-container">
-                <div className="container">
-                    <button
-                        type="button"
-                        className="play-btn"
-                        disabled={isCountingDown}
-                        onClick={isPlaying ? endGame : startGame}
-                    >
-                        {isPlaying ? 'Stop' : 'Play'}
-                    </button>
-                    <div className={classNames({ 'beat-btn-container': true })}>
-                        <button
-                            type="button"
-                            disabled={isCountingDown || isPlaying || maxBeats >= MAX_BEATS}
-                            onClick={handleNewBeat}
-                        >
-                            <img src={upArrowIcon} alt="Add beat" />
-                        </button>
-                        <button
-                            type="button"
-                            disabled={isCountingDown || isPlaying || maxBeats <= MIN_BEATS}
-                            onClick={handleRemoveBeat}
-                        >
-                            <img src={downArrowIcon} alt="Remove beat" />
-                        </button>
-                    </div>
-
-                    <button
-                        className="mute"
-                        disabled={isCountingDown || isPlaying}
-                        onClick={() => {
-                            setIsMuted(!isMuted);
-                        }}
-                    >
-                        <img src={isMuted ? volumeOffIcon : volumeOnIcon} alt={isMuted ? 'Unmute' : 'Mute'} />
-                    </button>
-
-                    <button
-                        type="button"
-                        className="randomize"
-                        disabled={isCountingDown || isPlaying}
-                        onClick={handleRandomizeBeats}
-                    >
-                        <img src={refreshIcon} alt="Randomize beats" />
-                    </button>
-
-                    <div className="bpm">
-                        <Select
-                            className="bpm-select"
-                            label="BPM"
-                            defaultValue={INIT_BPM}
-                            disabled={isCountingDown || isPlaying}
-                            name="bpm"
-                            onChange={(e: ChangeEvent<HTMLSelectElement>) => setBpm(Number(e.currentTarget.value))}
-                            options={Array.from(Array<number>(N_BPMS).keys(), (index) => {
-                                const optValue = index * BPM_STEP + MIN_BPM;
-                                return {
-                                    optKey: optValue + '',
-                                    optLabel: optValue + '',
-                                };
-                            })}
-                        />
-                    </div>
-                </div>
-            </div>
+            <ControlsMenu
+                isPlaying={isPlaying}
+                isPlayDisabled={isCountingDown}
+                handlePlayClick={isPlaying ? endGame : startGame}
+                isAddBeatDisabled={isCountingDown || isPlaying || maxBeats >= MAX_BEATS}
+                isRemoveBeatDisabled={isCountingDown || isPlaying || maxBeats <= MIN_BEATS}
+                handleNewBeat={handleNewBeat}
+                handleRemoveBeat={handleRemoveBeat}
+                areControlsDisabled={isCountingDown || isPlaying}
+                isMuted={isMuted}
+                handleMute={() => setIsMuted(!isMuted)}
+                handleRandomizeBeats={handleRandomizeBeats}
+                setBpm={setBpm}
+            />
 
             <RhythmGrid
                 currentBeat={currentBeat}

@@ -30,12 +30,18 @@ body,
 #root {
     height: 100vh;
     overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
 }
 
 #root {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#root::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 body {

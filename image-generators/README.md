@@ -18,6 +18,10 @@ The intent is to be as straightforward and automated as possible, but there are 
 - Levada rhythm is an array of one or more rhythmic elements composed of type and duration. The sum of all durations should be 1/4 because we're considering the quaver to be one beat (n/4 time signature). This is what's used to play the audio (see [playBeat.ts](/src/utils/playBeat.ts))  
     - Type is either "note" or "rest"  
     - Duration is a fraction written as a string, preferably with spaces so that the linter doesn't complain (i.e. "1 / 8" for a quaver)  
-        - If you wish to add a dotted note, you can either write for instance "1 / 8 + 1 / 4" or write directly "3 / 8"  
+        - If you wish to add a dotted note, you can either write for instance "1 / 8 + 1 / 16" (preferred) or write directly "3 / 16"  
   
-2. After you've defined it, use `make SOURCE=<figureName>`, where figureName is the figure name defined in the JSON file. This command will create all necessary and files directories and should be already up on the website upon reload.
+2. After you've defined it, use `make SOURCE=<figureName>`, where figureName is the figure name defined in the JSON file. This command will create all necessary and files directories and should be already up on the website upon reload.  
+  
+If you wish to update a Rhythmic Figure, run `make update SOURCE=<figureName>` and it should be updated properly.  
+  
+If you wish to set the color of an object, check out Lilypond's [context reference](http://lilypond.org/doc/v2.18/Documentation/notation/contexts-explained) and [layout object reference](https://lilypond.org/doc/v2.18/Documentation/internals/all-layout-objects) and update `templates/template.ly` accordingly.

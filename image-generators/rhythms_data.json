@@ -96,5 +96,19 @@
         "levada_rhythm": [
             { "type": "rest", "duration": "1 / 4" }
         ]
+    },
+    "eightDotSixt": {
+        "ly_rhythm": "c8. c16",
+        "levada_rhythm": [
+            { "type": "note", "duration": "1 / 8 + 1/16" },
+            { "type": "note", "duration": "1 / 16" }
+        ]
+    },
+    "sixtEightDot": {
+        "ly_rhythm": "c16 c8.",
+        "levada_rhythm": [
+            { "type": "note", "duration": "1 / 16" },
+            { "type": "note", "duration": "1 / 8 + 1/16" }
+        ]
     }
 }

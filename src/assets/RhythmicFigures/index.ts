@@ -12,6 +12,8 @@ import triplets3Rest from './Triplets3Rest';
 import restEight from './RestEight';
 import eightRest from './EightRest';
 import rest from './Rest';
+import eightDotSixt from './EightDotSixt';
+import sixtEightDot from './SixtEightDot';
 
 interface RhythmElementData {
     type: string; // 'note' or 'rest'
@@ -39,6 +41,8 @@ export const RHYTHMIC_FIGURES: RhythmicFigureData = {
     restEight: restEight,
     eightRest: eightRest,
     rest: rest,
+    eightDotSixt: eightDotSixt,
+    sixtEightDot: sixtEightDot,
 };
 
 export const RHYTHMIC_FIGURE_NAMES: string[] = Object.keys(RHYTHMIC_FIGURES);
