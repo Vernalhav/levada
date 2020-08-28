@@ -11,8 +11,8 @@ type soundBuffers = { [name: string]: AudioBuffer };
 const sounds = {} as soundBuffers;
 initializeAudioBuffers();
 
-const MIN_PLAYBACK_RATE = 2;
-const MAX_PLAYBACK_RATE = 4;
+const MIN_PLAYBACK_RATE = 1.5;
+const MAX_PLAYBACK_RATE = 2.5;
 
 // Contains an array with all source nodes played in the current beat.
 let currentBeatSources: Array<AudioBufferSourceNode> = []; // Used to cancel the current beat
@@ -54,7 +54,6 @@ function playAudio(audioName: string, time: number, playbackRate = 1): void {
  *
  * @param rhythmicFigure name of the rhythmic figure as per RHYTHMIC_FIGURE keys (see assets/RhythmicFigures/index.ts)
  * @param tempo amount of beats per minute
- * @param isMuted whether to play the snaps or only the beats
  * @param beatUnit note value of a beat. (i.e. 4 in 3/4 time)
  */
 export default async function playBeat(rhythmicFigure: string, tempo: number, beatUnit = 4): Promise<void> {
@@ -64,7 +63,7 @@ export default async function playBeat(rhythmicFigure: string, tempo: number, be
     const playbackRate = clamp(MIN_PLAYBACK_RATE, tempo / 40, MAX_PLAYBACK_RATE);
 
     let currentElementTime = audioContext.currentTime + 0.1;
-    playAudio('beat', currentElementTime + 0.001, playbackRate);
+    playAudio('beat', currentElementTime - 0.01, playbackRate); // Not an ideal solution
 
     for (let i = 0; i < rhythm.length; i++) {
         const rhythmElement = rhythm[i];

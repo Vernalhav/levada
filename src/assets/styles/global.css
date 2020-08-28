@@ -40,8 +40,8 @@ body,
 }
 
 #root::-webkit-scrollbar {
-    width: none;
-    height: none;
+    width: 0;
+    height: 0;
 }
 
 body {

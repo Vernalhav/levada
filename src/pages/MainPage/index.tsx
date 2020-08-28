@@ -17,7 +17,7 @@ function MainPage(): JSX.Element {
     const INIT_MAX_BEATS = 4;
     const MAX_BEATS = 30;
     const MIN_BEATS = 4;
-    // const BEATS_PER_MEASURE = 4;
+    const BEATS_PER_MEASURE = 4;
 
     const [currentBeat, setCurrentBeat] = useState(0);
     const [maxBeats, setMaxBeats] = useState(INIT_MAX_BEATS);
@@ -37,14 +37,12 @@ function MainPage(): JSX.Element {
 
     useEffect(() => {
         async function waitForNextBeat() {
-            playBeat(rhythmicFigures[currentBeat], bpm);
+            if (!isMuted) playBeat(rhythmicFigures[currentBeat], bpm);
+            else playBeat('rest', bpm);
             await sleep(60000 / bpm);
-            const nextBeat = currentBeat + 1;
 
-            setCurrentBeat((prevState) => {
-                if (nextBeat !== prevState + 1) return 0; // In case the user stopped playing
-                return nextBeat;
-            });
+            const nextBeat = currentBeat + 1;
+            setCurrentBeat(nextBeat);
         }
 
         if (isPlaying && currentBeat < maxBeats) waitForNextBeat();
@@ -54,7 +52,7 @@ function MainPage(): JSX.Element {
     async function startGame() {
         setCurrentBeat(0);
         setisCountingDown(true);
-        // await playInitialMeasure();
+        await playInitialMeasure();
         setEnableHighlighting(true);
         setIsPlaying(true); // Actually starts rhythm loop
         setisCountingDown(false);
@@ -89,16 +87,14 @@ function MainPage(): JSX.Element {
         );
     }
 
-    // async function playInitialMeasure() {
-    //     const beat = getBeatSound(bpm);
-
-    //     for (let i = 0; i < BEATS_PER_MEASURE; i++) {
-    //         beat.play();
-    //         setEnableHighlighting(true);
-    //         setTimeout(() => setEnableHighlighting(false), 100);
-    //         await sleep(60000 / bpm);
-    //     }
-    // }
+    async function playInitialMeasure() {
+        for (let i = 0; i < BEATS_PER_MEASURE; i++) {
+            playBeat('rest', bpm);
+            setEnableHighlighting(true);
+            setTimeout(() => setEnableHighlighting(false), 200);
+            await sleep(60000 / bpm);
+        }
+    }
 
     return (
         <div id="main-page">

@@ -19,7 +19,7 @@ Currently the site is in its barest-bones version possible, but it's enough to s
 # Browser Support  
 Platform &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Chrome | Edge | Firefox | Safari  
 ---------|-------|------|---------|-------  
-Computer         | Yes | Yes | No | Untested  
+Computer         | Yes | Yes | Yes | Untested  
 iOS              | No  | Untested   | Untested  | No  
 Android          | Untested | Untested | Untested | Untested  
 
@@ -65,7 +65,6 @@ Feedback is ALWAYS appreciated!
 - Scoring system!!  
 - Select only a subset of rhythmic figures to appear  
 - Refactor mainPage's game logic  
-- Refactor application to use Web Audio API  
 - Fix mobile layout  
 - Remove rhythmic figure to image-generators' make  
 - Better parsing of dotted notes in image-generators/rhythms_data.json  
