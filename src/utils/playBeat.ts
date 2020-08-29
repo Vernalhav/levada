@@ -1,10 +1,12 @@
+import { AudioContext, IAudioBufferSourceNode, IAudioContext } from 'standardized-audio-context';
+
 import beatSound from '../assets/sounds/beat.wav';
 import snapSound from '../assets/sounds/snap.wav';
 
 import { RHYTHMIC_FIGURES } from '../assets/RhythmicFigures';
+
 import clamp from './clamp';
 
-const AudioContext = window.AudioContext; // window.webkitAudioContext apparently isn't a window property
 const audioContext = new AudioContext();
 
 type soundBuffers = { [name: string]: AudioBuffer };
@@ -15,7 +17,7 @@ const MIN_PLAYBACK_RATE = 1.5;
 const MAX_PLAYBACK_RATE = 2.5;
 
 // Contains an array with all source nodes played in the current beat.
-let currentBeatSources: Array<AudioBufferSourceNode> = []; // Used to cancel the current beat
+let currentBeatSources: Array<IAudioBufferSourceNode<IAudioContext>> = []; // Used to cancel the current beat
 
 async function initializeAudioBuffers(): Promise<void> {
     sounds['beat'] = await getAudioBuffer(beatSound);
@@ -24,7 +26,8 @@ async function initializeAudioBuffers(): Promise<void> {
 
 async function getAudioBuffer(audio: string): Promise<AudioBuffer> {
     const response = await fetch(audio);
-    const audioBuffer = await audioContext.decodeAudioData(await response.arrayBuffer());
+    const arrayBuffer = await response.arrayBuffer();
+    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
     return audioBuffer;
 }
 

@@ -4,7 +4,7 @@
     justify-content: center;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    height: fit-content;
+    min-height: fit-content;
 }
 
 .center-container .container {
@@ -15,9 +15,9 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 2.5rem);
     grid-template-areas:
-        "play play play add-beat"
-        "play play play remove-beat"
-        "mute randomize bpm bpm";
+    "play play play add-beat"
+    "play play play remove-beat"
+    "mute randomize bpm bpm";
     grid-row-gap: 0.5rem;
     grid-column-gap: 0.5rem;
     margin-bottom: 1rem;
@@ -37,6 +37,10 @@
 
 .center-container .container .add-beat-btn {
     grid-area: add-beat;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .center-container .container .add-beat-btn img {
@@ -45,6 +49,10 @@
 
 .center-container .container .remove-beat-btn {
     grid-area: remove-beat;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .center-container .container .remove-beat-btn img {
