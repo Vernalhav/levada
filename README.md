@@ -20,10 +20,9 @@ Currently the site is in its barest-bones version possible, but it's enough to s
 Platform &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Chrome | Edge | Firefox | Safari  
 ---------|-------|------|---------|-------  
 Computer         | Yes | Yes | Yes | Untested  
-iOS              | No  | Untested   | Untested  | No  
+iOS              | YES  | Untested   | Untested  | Yes  
 Android          | Yes | Untested | Yes | Untested  
 
-On iOS, both in Safari and in Chrome, the grid is not aligned properly and the sound is not playing. See [Issue #4](https://github.com/Vernalhav/levada/issues/4) and [Issue #9](https://github.com/Vernalhav/levada/issues/9)  
 Feel free to test this in other browsers and update this README :)  
   
 # Project Structure  
@@ -63,8 +62,6 @@ Feedback is ALWAYS appreciated!
 # TODO:  
 - Scoring system!!  
 - Select only a subset of rhythmic figures to appear  
-- Fix mobile layout on iOS  
-- Fix audio and crash issues on iOS  
 - Remove rhythmic figure to image-generators' make  
 - Better parsing of dotted notes in image-generators/rhythms_data.json  
 - Play multi-beat rhythmic figures (and possibly display them in a different way)  
