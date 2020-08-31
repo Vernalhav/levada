@@ -13,11 +13,12 @@
     
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 2.5rem);
+    grid-template-rows: repeat(4, 2.5rem);
     grid-template-areas:
-    "play play play add-beat"
-    "play play play remove-beat"
-    "mute randomize bpm bpm";
+        "bpm bpm bpm bpm"
+        "mute play play add-beat"
+        "loop play play remove-beat"
+        "select choose choose randomize";
     grid-row-gap: 0.5rem;
     grid-column-gap: 0.5rem;
     margin-bottom: 1rem;
@@ -29,6 +30,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0;
+}
+
+.center-container .controls-menu button img {
+    width: 1rem;
 }
 
 .center-container .controls-menu .play-btn {
@@ -37,22 +43,10 @@
 
 .center-container .controls-menu .add-beat-btn {
     grid-area: add-beat;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .center-container .controls-menu .remove-beat-btn {
     grid-area: remove-beat;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.center-container .controls-menu button img {
-    width: 1.5rem;
 }
 
 .center-container .controls-menu .mute {
@@ -73,6 +67,11 @@
     grid-area: randomize;
 }
 
+.center-container .controls-menu .allow-figures img,
+.center-container .controls-menu .randomize img {
+    width: 1.3rem;
+}
+
 .center-container .controls-menu .loop {
     grid-area: loop;
 }
@@ -88,6 +87,7 @@
 .center-container .controls-menu .bpm {
     grid-area: bpm;
     align-self: center;
+    margin-bottom: 1rem;
 }
 
 .center-container .controls-menu div select {
@@ -107,5 +107,9 @@
         grid-row-gap: 0.5rem;
         grid-column-gap: 0.5rem;
         margin-bottom: 1rem;
+    }
+
+    .center-container .controls-menu .bpm {
+        margin-bottom: 0;
     }
 }
