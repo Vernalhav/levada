@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Create a report to help us improve the site
 title: "[BUG]"
 labels: bug
 assignees: Vernalhav
@@ -30,4 +30,4 @@ If applicable, add screenshots to help explain your problem.
  - Browser [e.g. stock browser, safari]
 
 **Additional context**
-Add any other context about the problem here.
+Add any other context about the problem here. Please include (if possible) the relevant file(s) or code snippet (instructions [here](https://docs.github.com/en/github/managing-your-work-on-github/creating-a-permanent-link-to-a-code-snippet))
