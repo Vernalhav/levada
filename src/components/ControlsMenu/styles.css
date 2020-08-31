@@ -51,14 +51,24 @@
 
 .center-container .controls-menu .mute {
     grid-area: mute;
-    transition-property: background-color, border;
 }
 
+.center-container .controls-menu .loop {
+    grid-area: loop;
+}
+
+.center-container .controls-menu .loop,
+.center-container .controls-menu .mute {
+    transition-property: border, background-color;
+}
+
+.center-container .controls-menu .loop.isnt-looping,
 .center-container .controls-menu .mute.is-muted {
     background-color: var(--color-background);
     border: 1.5px solid var(--color-secondary);
 }
 
+.center-container .controls-menu .loop.isnt-looping:hover,
 .center-container .controls-menu .mute.is-muted:hover {
     border: 1.5px solid var(--color-contrast);
 }
@@ -70,10 +80,6 @@
 .center-container .controls-menu .allow-figures img,
 .center-container .controls-menu .randomize img {
     width: 1.3rem;
-}
-
-.center-container .controls-menu .loop {
-    grid-area: loop;
 }
 
 .center-container .controls-menu .allow-figures {
