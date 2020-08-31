@@ -7,7 +7,7 @@
     min-height: fit-content;
 }
 
-.center-container .container {
+.center-container .controls-menu {
     width: 80%;
     justify-content: space-between;
     
@@ -23,7 +23,7 @@
     margin-bottom: 1rem;
 }
 
-.center-container .container button {
+.center-container .controls-menu button {
     height: 100%;
     border-radius: 0.5rem;
     display: flex;
@@ -31,11 +31,11 @@
     align-items: center;
 }
 
-.center-container .container .play-btn {
+.center-container .controls-menu .play-btn {
     grid-area: play;
 }
 
-.center-container .container .add-beat-btn {
+.center-container .controls-menu .add-beat-btn {
     grid-area: add-beat;
     padding: 0;
     display: flex;
@@ -43,11 +43,7 @@
     align-items: center;
 }
 
-.center-container .container .add-beat-btn img {
-    width: 2rem;
-}
-
-.center-container .container .remove-beat-btn {
+.center-container .controls-menu .remove-beat-btn {
     grid-area: remove-beat;
     padding: 0;
     display: flex;
@@ -55,47 +51,59 @@
     align-items: center;
 }
 
-.center-container .container .remove-beat-btn img {
-    width: 2rem;
+.center-container .controls-menu button img {
+    width: 1.5rem;
 }
 
-.center-container .container .mute {
+.center-container .controls-menu .mute {
     grid-area: mute;
     transition-property: background-color, border;
 }
 
-.center-container .container .mute.is-muted {
+.center-container .controls-menu .mute.is-muted {
     background-color: var(--color-background);
     border: 1.5px solid var(--color-secondary);
 }
 
-.center-container .container .mute.is-muted:hover {
+.center-container .controls-menu .mute.is-muted:hover {
     border: 1.5px solid var(--color-contrast);
 }
 
-.center-container .container .randomize {
+.center-container .controls-menu .randomize {
     grid-area: randomize;
 }
 
-.center-container .container .bpm {
+.center-container .controls-menu .loop {
+    grid-area: loop;
+}
+
+.center-container .controls-menu .allow-figures {
+    grid-area: select;
+}
+
+.center-container .controls-menu .choose-figure {
+    grid-area: choose;
+}
+
+.center-container .controls-menu .bpm {
     grid-area: bpm;
     align-self: center;
 }
 
-.center-container .container div select {
+.center-container .controls-menu div select {
     text-align-last: center;
     text-align: center;
 }
 
 @media (min-width: 950px) {
-    .center-container .container {
+    .center-container .controls-menu {
         width: 80%;
         
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(2, 2.5rem);
-        grid-template-areas: "play play add-beat mute bpm"
-                                "play play remove-beat randomize bpm";
+        grid-template-areas: "mute loop play play add-beat randomize"
+                                "select choose play play remove-beat bpm";
         grid-row-gap: 0.5rem;
         grid-column-gap: 0.5rem;
         margin-bottom: 1rem;

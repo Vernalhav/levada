@@ -7,7 +7,10 @@ import upArrowIcon from '../../assets/images/icons/up_arrow.svg';
 import downArrowIcon from '../../assets/images/icons/down_arrow.svg';
 import volumeOnIcon from '../../assets/images/icons/volume_on.svg';
 import volumeOffIcon from '../../assets/images/icons/volume_off.svg';
-import refreshIcon from '../../assets/images/icons/refresh.svg';
+import randomizeIcon from '../../assets/images/icons/randomize.svg';
+import addIcon from '../../assets/images/icons/add.svg';
+import loopIcon from '../../assets/images/icons/loop.svg';
+import selectIcon from '../../assets/images/icons/select.svg';
 
 import './styles.css';
 
@@ -52,8 +55,8 @@ function ControlsMenu({
 
     return (
         <div className="center-container">
-            <div className="container">
-                <button type="button" className="play-btn" disabled={isPlayDisabled} onClick={handlePlayClick}>
+            <div className="controls-menu">
+                <button className="play-btn" type="button" disabled={isPlayDisabled} onClick={handlePlayClick}>
                     {isPlaying ? 'Stop' : 'Play'}
                 </button>
 
@@ -79,12 +82,34 @@ function ControlsMenu({
                 </button>
 
                 <button
-                    type="button"
                     className="randomize"
+                    type="button"
                     disabled={areControlsDisabled}
                     onClick={handleRandomizeBeats}
                 >
-                    <img src={refreshIcon} alt="Randomize beats" />
+                    <img src={randomizeIcon} alt="Randomize beats" />
+                </button>
+
+                <button className="loop" type="button" disabled={areControlsDisabled} onClick={handleRandomizeBeats}>
+                    <img src={loopIcon} alt="Toggle loop rhythm" />
+                </button>
+
+                <button
+                    className="allow-figures"
+                    type="button"
+                    disabled={areControlsDisabled}
+                    onClick={handleRandomizeBeats}
+                >
+                    <img src={selectIcon} alt="Choose which figures can appear" />
+                </button>
+
+                <button
+                    className="choose-figure"
+                    type="button"
+                    disabled={areControlsDisabled}
+                    onClick={handleRandomizeBeats}
+                >
+                    <img src={addIcon} alt="Choose new rhythmic figure" />
                 </button>
 
                 <div className="bpm">

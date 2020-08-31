@@ -20,7 +20,7 @@ Currently the site is in its barest-bones version possible, but it's enough to s
 Platform &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Chrome | Edge | Firefox | Safari  
 ---------|-------|------|---------|-------  
 Computer         | Yes | Yes | Yes | Untested  
-iOS              | YES  | Untested   | Untested  | Yes  
+iOS              | Yes  | Untested   | Untested  | Yes  
 Android          | Yes | Untested | Yes | Untested  
 
 Feel free to test this in other browsers and update this README :)  
