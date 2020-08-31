@@ -1,7 +1,8 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
 
 import Select from '../Select';
+import FigureSelectBar, { states } from '../FigureSelectBar';
 
 import upArrowIcon from '../../assets/images/icons/up_arrow.svg';
 import downArrowIcon from '../../assets/images/icons/down_arrow.svg';
@@ -59,6 +60,8 @@ function ControlsMenu({
     const BPM_STEP = 10;
     const N_BPMS = (MAX_BPM - MIN_BPM) / BPM_STEP + 1;
 
+    const [currentState, setCurrentState] = useState(states.NONE);
+
     return (
         <div className="center-container">
             <div className="controls-menu">
@@ -105,11 +108,25 @@ function ControlsMenu({
                     <img src={isLooping ? loopIcon : noLoopIcon} alt="Toggle loop rhythm" />
                 </button>
 
-                <button className="allow-figures" type="button" disabled={true} onClick={handleRandomizeBeats}>
+                <button
+                    className="allow-figures"
+                    type="button"
+                    disabled={areControlsDisabled || (currentState !== states.NONE && currentState !== states.SELECT)}
+                    onClick={() => {
+                        currentState === states.NONE ? setCurrentState(states.SELECT) : setCurrentState(states.NONE);
+                    }}
+                >
                     <img src={selectIcon} alt="Choose which figures can appear" />
                 </button>
 
-                <button className="choose-figure" type="button" disabled={true} onClick={handleRandomizeBeats}>
+                <button
+                    className="choose-figure"
+                    type="button"
+                    disabled={areControlsDisabled || (currentState !== states.NONE && currentState !== states.CHOOSE)}
+                    onClick={() => {
+                        currentState === states.NONE ? setCurrentState(states.CHOOSE) : setCurrentState(states.NONE);
+                    }}
+                >
                     <img src={addIcon} alt="Choose new rhythmic figure" />
                 </button>
 
@@ -131,6 +148,8 @@ function ControlsMenu({
                     />
                 </div>
             </div>
+
+            <FigureSelectBar state={currentState} />
         </div>
     );
 }

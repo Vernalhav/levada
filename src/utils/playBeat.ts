@@ -13,7 +13,7 @@ type soundBuffers = { [name: string]: AudioBuffer };
 const sounds = {} as soundBuffers;
 initializeAudioBuffers();
 
-const MIN_PLAYBACK_RATE = 1.5;
+const MIN_PLAYBACK_RATE = 2.5;
 const MAX_PLAYBACK_RATE = 2.5;
 
 // Contains an array with all source nodes played in the current beat.
