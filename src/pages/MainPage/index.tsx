@@ -31,9 +31,10 @@ function MainPage(): JSX.Element {
 
     const [isPlaying, setIsPlaying] = useState(false); // Determines whether or not the main rhythm is playing
     const [isCountingDown, setisCountingDown] = useState(false); // Determines whether or not the initial metronome is playing
-
     const [enableHighlighting, setEnableHighlighting] = useState(false);
+
     const [isMuted, setIsMuted] = useState(false);
+    const [isLooping, setIsLooping] = useState(false);
 
     useEffect(() => {
         async function waitForNextBeat() {
@@ -116,7 +117,9 @@ function MainPage(): JSX.Element {
                 handleRemoveBeat={handleRemoveBeat}
                 areControlsDisabled={isCountingDown || isPlaying}
                 isMuted={isMuted}
-                handleMute={() => setIsMuted(!isMuted)}
+                handleMuteToggle={() => setIsMuted(!isMuted)}
+                isLooping={isLooping}
+                handleLoopToggle={() => setIsLooping(!isLooping)}
                 handleRandomizeBeats={handleRandomizeBeats}
                 setBpm={setBpm}
             />

@@ -24,7 +24,7 @@
     }
 }
 
-@media (min-width: 900px){
+@media (min-width: 950px){
     #rhythm-grid .container {
         grid-template-columns: repeat(5, 1fr);
     }

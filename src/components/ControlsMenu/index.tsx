@@ -10,27 +10,31 @@ import volumeOffIcon from '../../assets/images/icons/volume_off.svg';
 import randomizeIcon from '../../assets/images/icons/randomize.svg';
 import addIcon from '../../assets/images/icons/add.svg';
 import loopIcon from '../../assets/images/icons/loop.svg';
+import noLoopIcon from '../../assets/images/icons/no-loop.svg';
 import selectIcon from '../../assets/images/icons/select.svg';
 
 import './styles.css';
 
 interface ControlsMenuProps {
     isPlaying: boolean;
-    isPlayDisabled: boolean; // {isCountingDown}
-    handlePlayClick: () => void; // {isPlaying ? endGame : startGame}
+    isPlayDisabled: boolean;
+    handlePlayClick: () => void;
 
-    isAddBeatDisabled: boolean; // {isCountingDown || isPlaying || maxBeats >= MAX_BEATS}
-    isRemoveBeatDisabled: boolean; // {isCountingDown || isPlaying || maxBeats <= MIN_BEATS}
+    isAddBeatDisabled: boolean;
+    isRemoveBeatDisabled: boolean;
     handleNewBeat: () => void;
     handleRemoveBeat: () => void;
 
-    areControlsDisabled: boolean; // {isCountingDown || isPlaying}
+    areControlsDisabled: boolean;
 
     isMuted: boolean;
-    handleMute: () => void; // setIsMuted(!isMuted);
+    handleMuteToggle: () => void;
 
     handleRandomizeBeats: () => void;
     setBpm: (newBpm: number) => void;
+
+    isLooping: boolean;
+    handleLoopToggle: () => void;
 }
 
 function ControlsMenu({
@@ -41,9 +45,11 @@ function ControlsMenu({
     isRemoveBeatDisabled,
     handleNewBeat,
     handleRemoveBeat,
-    isMuted,
     areControlsDisabled,
-    handleMute,
+    isMuted,
+    handleMuteToggle,
+    isLooping,
+    handleLoopToggle,
     handleRandomizeBeats,
     setBpm,
 }: ControlsMenuProps): JSX.Element {
@@ -76,7 +82,7 @@ function ControlsMenu({
                 <button
                     className={classNames({ mute: true, 'is-muted': isMuted })}
                     disabled={areControlsDisabled}
-                    onClick={handleMute}
+                    onClick={handleMuteToggle}
                 >
                     <img src={isMuted ? volumeOffIcon : volumeOnIcon} alt={isMuted ? 'Unmute' : 'Mute'} />
                 </button>
@@ -90,8 +96,13 @@ function ControlsMenu({
                     <img src={randomizeIcon} alt="Randomize beats" />
                 </button>
 
-                <button className="loop" type="button" disabled={areControlsDisabled} onClick={handleRandomizeBeats}>
-                    <img src={loopIcon} alt="Toggle loop rhythm" />
+                <button
+                    className={classNames({ loop: true, 'isnt-looping': !isLooping })}
+                    type="button"
+                    disabled={areControlsDisabled}
+                    onClick={handleLoopToggle}
+                >
+                    <img src={isLooping ? loopIcon : noLoopIcon} alt="Toggle loop rhythm" />
                 </button>
 
                 <button
