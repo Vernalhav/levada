@@ -68,8 +68,13 @@
     border: 1.5px solid var(--color-secondary);
 }
 
-.center-container .controls-menu .loop.isnt-looping:hover,
-.center-container .controls-menu .mute.is-muted:hover {
+.center-container .controls-menu .loop.isnt-looping:hover:enabled,
+.center-container .controls-menu .mute.is-muted:hover:enabled {
+    border: 1.5px solid var(--color-contrast);
+}
+
+.center-container .controls-menu .loop.isnt-looping:disabled,
+.center-container .controls-menu .mute.is-muted:disabled {
     border: 1.5px solid var(--color-contrast);
 }
 

@@ -42,13 +42,13 @@ function MainPage(): JSX.Element {
             else playBeat('rest', bpm);
             await sleep(60000 / bpm);
 
-            const nextBeat = currentBeat + 1;
+            const nextBeat = !isLooping ? currentBeat + 1 : (currentBeat + 1) % maxBeats;
             setCurrentBeat(nextBeat);
         }
 
         if (isPlaying && currentBeat < maxBeats) waitForNextBeat();
         else if (isPlaying) endGame();
-    }, [isPlaying, currentBeat, maxBeats, rhythmicFigures, bpm, isMuted]);
+    }, [isPlaying, currentBeat, maxBeats, rhythmicFigures, bpm, isMuted, isLooping]);
 
     async function startGame() {
         setCurrentBeat(0);

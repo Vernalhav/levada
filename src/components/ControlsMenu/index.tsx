@@ -105,21 +105,11 @@ function ControlsMenu({
                     <img src={isLooping ? loopIcon : noLoopIcon} alt="Toggle loop rhythm" />
                 </button>
 
-                <button
-                    className="allow-figures"
-                    type="button"
-                    disabled={areControlsDisabled}
-                    onClick={handleRandomizeBeats}
-                >
+                <button className="allow-figures" type="button" disabled={true} onClick={handleRandomizeBeats}>
                     <img src={selectIcon} alt="Choose which figures can appear" />
                 </button>
 
-                <button
-                    className="choose-figure"
-                    type="button"
-                    disabled={areControlsDisabled}
-                    onClick={handleRandomizeBeats}
-                >
+                <button className="choose-figure" type="button" disabled={true} onClick={handleRandomizeBeats}>
                     <img src={addIcon} alt="Choose new rhythmic figure" />
                 </button>
 
