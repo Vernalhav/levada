@@ -61,6 +61,7 @@ function ControlsMenu({
     const N_BPMS = (MAX_BPM - MIN_BPM) / BPM_STEP + 1;
 
     const [currentState, setCurrentState] = useState(states.NONE);
+    const [prevState, setPrevState] = useState(states.NONE);
 
     return (
         <div className="center-container">
@@ -113,6 +114,7 @@ function ControlsMenu({
                     type="button"
                     disabled={areControlsDisabled || (currentState !== states.NONE && currentState !== states.SELECT)}
                     onClick={() => {
+                        setPrevState(currentState);
                         currentState === states.NONE ? setCurrentState(states.SELECT) : setCurrentState(states.NONE);
                     }}
                 >
@@ -124,6 +126,7 @@ function ControlsMenu({
                     type="button"
                     disabled={areControlsDisabled || (currentState !== states.NONE && currentState !== states.CHOOSE)}
                     onClick={() => {
+                        setPrevState(currentState);
                         currentState === states.NONE ? setCurrentState(states.CHOOSE) : setCurrentState(states.NONE);
                     }}
                 >
@@ -149,7 +152,7 @@ function ControlsMenu({
                 </div>
             </div>
 
-            <FigureSelectBar state={currentState} />
+            <FigureSelectBar state={currentState} prevState={prevState} />
         </div>
     );
 }
