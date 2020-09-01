@@ -7,8 +7,8 @@ import { RHYTHMIC_FIGURES } from '../../assets/RhythmicFigures';
 
 interface RhythmicFigureProps extends HTMLAttributes<HTMLDivElement> {
     type: string;
-    isCurrentBeat: boolean;
-    isShining: boolean;
+    isCurrentBeat?: boolean;
+    isShining?: boolean;
 }
 
 function RhythmicFigure({ type, isCurrentBeat, isShining }: RhythmicFigureProps): JSX.Element {
@@ -22,7 +22,7 @@ function RhythmicFigure({ type, isCurrentBeat, isShining }: RhythmicFigureProps)
 
     return (
         <div className={classes}>
-            <img src={image} alt={`${type}`} />
+            <img src={image} alt={type} />
         </div>
     );
 }
