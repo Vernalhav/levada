@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import RhythmicFigure from '../RhythmicFigure';
@@ -10,6 +10,7 @@ interface FigureSelectBarProps {
     prevState: states;
     state: states;
     selectedFigures: { [figure: string]: boolean };
+    areMaxBeatsSelected: boolean;
     chooseFunction: (figure: string) => void;
     selectFunction: (figure: string) => void;
 }
@@ -29,6 +30,7 @@ const statesMessages = {
 function FigureSelectBar({
     prevState,
     state,
+    areMaxBeatsSelected,
     chooseFunction,
     selectFunction,
     selectedFigures,
@@ -39,8 +41,21 @@ function FigureSelectBar({
     }
 
     function isHighlighted(figureName: string): boolean {
-        if (state === states.CHOOSE) return true;
+        if (state === states.CHOOSE) return !areMaxBeatsSelected;
         return selectedFigures[figureName];
+    }
+
+    const [isFlashing, setIsFlashing] = useState(() => {
+        const figures: { [name: string]: boolean } = {};
+        RHYTHMIC_FIGURE_NAMES.forEach((element) => {
+            figures[element] = false;
+        });
+        return figures;
+    });
+
+    function flash(figure: string) {
+        setIsFlashing({ ...isFlashing, [figure]: true });
+        setTimeout(() => setIsFlashing({ ...isFlashing, [figure]: false }), 400);
     }
 
     return (
@@ -56,9 +71,12 @@ function FigureSelectBar({
                                 type={figureName}
                                 key={index}
                                 isHighlighted={isHighlighted(figureName)}
+                                isShining={isFlashing[figureName]}
                                 onClick={() => {
-                                    if (state === states.CHOOSE) chooseFunction(figureName);
-                                    else if (state === states.SELECT) selectFunction(figureName);
+                                    if (state === states.CHOOSE && !areMaxBeatsSelected) {
+                                        flash(figureName);
+                                        chooseFunction(figureName);
+                                    } else if (state === states.SELECT) selectFunction(figureName);
                                 }}
                             />
                         );

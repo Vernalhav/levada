@@ -256,6 +256,7 @@ function ControlsMenu({
                 selectedFigures={selectedFigures}
                 selectFunction={selectFunction}
                 chooseFunction={chooseFunction}
+                areMaxBeatsSelected={areMaxBeatsSelected}
             />
         </div>
     );
