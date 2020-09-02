@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
+import githubLogo from '../../assets/images/github-logo.svg';
 
 import RhythmGrid from '../../components/RhythmGrid';
 import ControlsMenu from '../../components/ControlsMenu';
@@ -121,9 +122,15 @@ function MainPage(): JSX.Element {
     return (
         <div id="main-page">
             <header>
-                <div>
+                <div className="levada-container">
                     <a href="https://github.com/vernalhav/levada" target="_blank" rel="noopener noreferrer">
                         <img src={levadaLogo} alt="Levada's GitHub page link" />
+                    </a>
+                </div>
+                <div className="github-container">
+                    <p>Check out the project on GitHub</p>
+                    <a href="https://github.com/vernalhav/levada" target="_blank" rel="noopener noreferrer">
+                        <img src={githubLogo} alt="Levada's GitHub page link" />
                     </a>
                 </div>
             </header>

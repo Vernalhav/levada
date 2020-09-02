@@ -72,6 +72,7 @@ function FigureSelectBar({
                                 key={index}
                                 isHighlighted={isHighlighted(figureName)}
                                 isShining={isFlashing[figureName]}
+                                style={state === states.SELECT || !areMaxBeatsSelected ? { cursor: 'pointer' } : {}}
                                 onClick={() => {
                                     if (state === states.CHOOSE && !areMaxBeatsSelected) {
                                         flash(figureName);
