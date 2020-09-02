@@ -7,21 +7,21 @@ import { RHYTHMIC_FIGURES } from '../../assets/RhythmicFigures';
 
 interface RhythmicFigureProps extends HTMLAttributes<HTMLDivElement> {
     type: string;
-    isCurrentBeat?: boolean;
+    isHighlighted?: boolean;
     isShining?: boolean;
 }
 
-function RhythmicFigure({ type, isCurrentBeat, isShining }: RhythmicFigureProps): JSX.Element {
+function RhythmicFigure({ type, isHighlighted, isShining, ...rest }: RhythmicFigureProps): JSX.Element {
     const image = RHYTHMIC_FIGURES[type].image;
 
     const classes = classNames({
         'rhythmic-figure': true,
-        highlighted: isCurrentBeat,
+        highlighted: isHighlighted,
         shining: isShining,
     });
 
     return (
-        <div className={classes}>
+        <div className={classes} {...rest}>
             <img src={image} alt={type} />
         </div>
     );

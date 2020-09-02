@@ -5,7 +5,7 @@ import levadaLogo from '../../assets/images/levada-logo-white.svg';
 import RhythmGrid from '../../components/RhythmGrid';
 import ControlsMenu from '../../components/ControlsMenu';
 
-import getRhythmicFigure from '../../utils/getRhythmicFigure';
+import getRhythmicFigure, { getAllFigures } from '../../utils/getRhythmicFigure';
 import playBeat, { cancelPlayBeat } from '../../utils/playBeat';
 import sleep from '../../utils/sleep';
 
@@ -16,16 +16,18 @@ function MainPage(): JSX.Element {
 
     const INIT_MAX_BEATS = 4;
     const MAX_BEATS = 30;
-    const MIN_BEATS = 4;
+    const MIN_BEATS = 0;
     const BEATS_PER_MEASURE = 4;
 
     const [currentBeat, setCurrentBeat] = useState(0);
     const [maxBeats, setMaxBeats] = useState(INIT_MAX_BEATS);
     const [bpm, setBpm] = useState(INIT_BPM);
 
+    const [selectedFigures, setSelectedFigures] = useState(getAllFigures());
+
     const [rhythmicFigures, setRhythmicFigures] = useState(() => {
         const randomArray: string[] = [];
-        for (let i = 0; i < maxBeats; i++) randomArray.push(getRhythmicFigure());
+        for (let i = 0; i < maxBeats; i++) randomArray.push(getRhythmicFigure(selectedFigures));
         return randomArray;
     });
 
@@ -66,10 +68,13 @@ function MainPage(): JSX.Element {
         setCurrentBeat(0);
     }
 
-    function handleNewBeat() {
+    function handleNewBeat(figure?: string) {
         if (maxBeats < MAX_BEATS) {
             setMaxBeats(maxBeats + 1);
-            setRhythmicFigures([...rhythmicFigures, getRhythmicFigure()]);
+            setRhythmicFigures([
+                ...rhythmicFigures,
+                figure ? getRhythmicFigure(selectedFigures, figure) : getRhythmicFigure(selectedFigures),
+            ]);
         }
     }
 
@@ -83,7 +88,7 @@ function MainPage(): JSX.Element {
     function handleRandomizeBeats() {
         setRhythmicFigures(
             rhythmicFigures.map(() => {
-                return getRhythmicFigure();
+                return getRhythmicFigure(selectedFigures);
             }),
         );
     }
@@ -95,6 +100,14 @@ function MainPage(): JSX.Element {
             setTimeout(() => setEnableHighlighting(false), 200);
             await sleep(60000 / bpm);
         }
+    }
+
+    function selectFunction(figure: string) {
+        setSelectedFigures({ ...selectedFigures, [figure]: !selectedFigures[figure] });
+    }
+
+    function chooseFunction(figure: string) {
+        handleNewBeat(figure);
     }
 
     return (
@@ -109,7 +122,7 @@ function MainPage(): JSX.Element {
 
             <ControlsMenu
                 isPlaying={isPlaying}
-                isPlayDisabled={isCountingDown}
+                isPlayDisabled={isCountingDown || maxBeats <= 1}
                 handlePlayClick={isPlaying ? endGame : startGame}
                 isAddBeatDisabled={isCountingDown || isPlaying || maxBeats >= MAX_BEATS}
                 isRemoveBeatDisabled={isCountingDown || isPlaying || maxBeats <= MIN_BEATS}
@@ -122,6 +135,9 @@ function MainPage(): JSX.Element {
                 handleLoopToggle={() => setIsLooping(!isLooping)}
                 handleRandomizeBeats={handleRandomizeBeats}
                 setBpm={setBpm}
+                selectedFigures={selectedFigures}
+                chooseFunction={chooseFunction}
+                selectFunction={selectFunction}
             />
 
             <RhythmGrid

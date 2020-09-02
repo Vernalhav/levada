@@ -23,7 +23,7 @@ interface ControlsMenuProps {
 
     isAddBeatDisabled: boolean;
     isRemoveBeatDisabled: boolean;
-    handleNewBeat: () => void;
+    handleNewBeat: (figure?: string) => void;
     handleRemoveBeat: () => void;
 
     areControlsDisabled: boolean;
@@ -36,6 +36,10 @@ interface ControlsMenuProps {
 
     isLooping: boolean;
     handleLoopToggle: () => void;
+
+    selectedFigures: { [figure: string]: boolean };
+    chooseFunction: (figure: string) => void;
+    selectFunction: (figure: string) => void;
 }
 
 function ControlsMenu({
@@ -53,6 +57,9 @@ function ControlsMenu({
     handleLoopToggle,
     handleRandomizeBeats,
     setBpm,
+    selectedFigures,
+    chooseFunction,
+    selectFunction,
 }: ControlsMenuProps): JSX.Element {
     const INIT_BPM = 80;
     const MAX_BPM = 140;
@@ -70,7 +77,14 @@ function ControlsMenu({
                     {isPlaying ? 'Stop' : 'Play'}
                 </button>
 
-                <button className="add-beat-btn" type="button" disabled={isAddBeatDisabled} onClick={handleNewBeat}>
+                <button
+                    className="add-beat-btn"
+                    type="button"
+                    disabled={isAddBeatDisabled}
+                    onClick={() => {
+                        handleNewBeat();
+                    }}
+                >
                     <img src={upArrowIcon} alt="Add beat" />
                 </button>
 
@@ -152,7 +166,13 @@ function ControlsMenu({
                 </div>
             </div>
 
-            <FigureSelectBar state={currentState} prevState={prevState} />
+            <FigureSelectBar
+                state={currentState}
+                prevState={prevState}
+                selectedFigures={selectedFigures}
+                selectFunction={selectFunction}
+                chooseFunction={chooseFunction}
+            />
         </div>
     );
 }
