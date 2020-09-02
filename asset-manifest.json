@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/levada/static/css/main.21a0ea7b.chunk.css",
-    "main.js": "/levada/static/js/main.6efe0cfd.chunk.js",
-    "main.js.map": "/levada/static/js/main.6efe0cfd.chunk.js.map",
+    "main.css": "/levada/static/css/main.c8907638.chunk.css",
+    "main.js": "/levada/static/js/main.28035082.chunk.js",
+    "main.js.map": "/levada/static/js/main.28035082.chunk.js.map",
     "runtime-main.js": "/levada/static/js/runtime-main.a543009b.js",
     "runtime-main.js.map": "/levada/static/js/runtime-main.a543009b.js.map",
-    "static/js/2.30042af6.chunk.js": "/levada/static/js/2.30042af6.chunk.js",
-    "static/js/2.30042af6.chunk.js.map": "/levada/static/js/2.30042af6.chunk.js.map",
+    "static/js/2.9ded5a38.chunk.js": "/levada/static/js/2.9ded5a38.chunk.js",
+    "static/js/2.9ded5a38.chunk.js.map": "/levada/static/js/2.9ded5a38.chunk.js.map",
     "index.html": "/levada/index.html",
-    "precache-manifest.aaee54ba3059f8a643d65253f47c9198.js": "/levada/precache-manifest.aaee54ba3059f8a643d65253f47c9198.js",
+    "precache-manifest.046baa848760a1b2c70362b17a9e93c1.js": "/levada/precache-manifest.046baa848760a1b2c70362b17a9e93c1.js",
     "service-worker.js": "/levada/service-worker.js",
-    "static/css/main.21a0ea7b.chunk.css.map": "/levada/static/css/main.21a0ea7b.chunk.css.map",
-    "static/js/2.30042af6.chunk.js.LICENSE.txt": "/levada/static/js/2.30042af6.chunk.js.LICENSE.txt",
+    "static/css/main.c8907638.chunk.css.map": "/levada/static/css/main.c8907638.chunk.css.map",
+    "static/js/2.9ded5a38.chunk.js.LICENSE.txt": "/levada/static/js/2.9ded5a38.chunk.js.LICENSE.txt",
     "static/media/add.svg": "/levada/static/media/add.d598ca5a.svg",
     "static/media/beat.wav": "/levada/static/media/beat.7b031259.wav",
     "static/media/down_arrow.svg": "/levada/static/media/down_arrow.4825b468.svg",
+    "static/media/github-logo.svg": "/levada/static/media/github-logo.fb6d45bb.svg",
     "static/media/levada-logo-white.svg": "/levada/static/media/levada-logo-white.e050d4d7.svg",
     "static/media/loop.svg": "/levada/static/media/loop.4e286d23.svg",
     "static/media/no-loop.svg": "/levada/static/media/no-loop.ee3697b6.svg",
@@ -27,8 +28,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.a543009b.js",
-    "static/js/2.30042af6.chunk.js",
-    "static/css/main.21a0ea7b.chunk.css",
-    "static/js/main.6efe0cfd.chunk.js"
+    "static/js/2.9ded5a38.chunk.js",
+    "static/css/main.c8907638.chunk.css",
+    "static/js/main.28035082.chunk.js"
   ]
 }
