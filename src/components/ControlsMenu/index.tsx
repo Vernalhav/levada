@@ -73,7 +73,12 @@ function ControlsMenu({
     return (
         <div className="center-container">
             <div className="controls-menu">
-                <button className="play-btn" type="button" disabled={isPlayDisabled} onClick={handlePlayClick}>
+                <button
+                    className="play-btn"
+                    type="button"
+                    disabled={isPlayDisabled || currentState !== states.NONE}
+                    onClick={handlePlayClick}
+                >
                     {isPlaying ? 'Stop' : 'Play'}
                 </button>
 
@@ -167,8 +172,8 @@ function ControlsMenu({
             </div>
 
             <FigureSelectBar
-                state={currentState}
-                prevState={prevState}
+                state={areControlsDisabled ? states.NONE : currentState}
+                prevState={areControlsDisabled ? currentState : prevState}
                 selectedFigures={selectedFigures}
                 selectFunction={selectFunction}
                 chooseFunction={chooseFunction}

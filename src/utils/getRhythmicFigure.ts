@@ -11,8 +11,6 @@ export default function getRhythmicFigure(selectedFigures: { [figure: string]: b
         const allowedFigures: Array<string> = [];
         for (const [figure, selected] of Object.entries(selectedFigures)) if (selected) allowedFigures.push(figure);
 
-        console.log(allowedFigures);
-
         return allowedFigures[Math.floor(Math.random() * allowedFigures.length)];
     }
     if (!selectedFigures.hasOwnProperty(figure)) {
