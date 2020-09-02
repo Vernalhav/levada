@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/levada/precache-manifest.0308c84e6f988898d9710c87237cb071.js"
+  "/levada/precache-manifest.aaee54ba3059f8a643d65253f47c9198.js"
 );
 
 self.addEventListener('message', (event) => {

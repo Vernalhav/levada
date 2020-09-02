@@ -1,30 +1,34 @@
 {
   "files": {
-    "main.css": "/levada/static/css/main.6a7599e4.chunk.css",
-    "main.js": "/levada/static/js/main.6a0c5f3c.chunk.js",
-    "main.js.map": "/levada/static/js/main.6a0c5f3c.chunk.js.map",
+    "main.css": "/levada/static/css/main.21a0ea7b.chunk.css",
+    "main.js": "/levada/static/js/main.6efe0cfd.chunk.js",
+    "main.js.map": "/levada/static/js/main.6efe0cfd.chunk.js.map",
     "runtime-main.js": "/levada/static/js/runtime-main.a543009b.js",
     "runtime-main.js.map": "/levada/static/js/runtime-main.a543009b.js.map",
-    "static/js/2.ac64d33c.chunk.js": "/levada/static/js/2.ac64d33c.chunk.js",
-    "static/js/2.ac64d33c.chunk.js.map": "/levada/static/js/2.ac64d33c.chunk.js.map",
+    "static/js/2.30042af6.chunk.js": "/levada/static/js/2.30042af6.chunk.js",
+    "static/js/2.30042af6.chunk.js.map": "/levada/static/js/2.30042af6.chunk.js.map",
     "index.html": "/levada/index.html",
-    "precache-manifest.0308c84e6f988898d9710c87237cb071.js": "/levada/precache-manifest.0308c84e6f988898d9710c87237cb071.js",
+    "precache-manifest.aaee54ba3059f8a643d65253f47c9198.js": "/levada/precache-manifest.aaee54ba3059f8a643d65253f47c9198.js",
     "service-worker.js": "/levada/service-worker.js",
-    "static/css/main.6a7599e4.chunk.css.map": "/levada/static/css/main.6a7599e4.chunk.css.map",
-    "static/js/2.ac64d33c.chunk.js.LICENSE.txt": "/levada/static/js/2.ac64d33c.chunk.js.LICENSE.txt",
+    "static/css/main.21a0ea7b.chunk.css.map": "/levada/static/css/main.21a0ea7b.chunk.css.map",
+    "static/js/2.30042af6.chunk.js.LICENSE.txt": "/levada/static/js/2.30042af6.chunk.js.LICENSE.txt",
+    "static/media/add.svg": "/levada/static/media/add.d598ca5a.svg",
     "static/media/beat.wav": "/levada/static/media/beat.7b031259.wav",
-    "static/media/down_arrow.svg": "/levada/static/media/down_arrow.9b58e57d.svg",
+    "static/media/down_arrow.svg": "/levada/static/media/down_arrow.4825b468.svg",
     "static/media/levada-logo-white.svg": "/levada/static/media/levada-logo-white.e050d4d7.svg",
-    "static/media/refresh.svg": "/levada/static/media/refresh.82814eb7.svg",
+    "static/media/loop.svg": "/levada/static/media/loop.4e286d23.svg",
+    "static/media/no-loop.svg": "/levada/static/media/no-loop.ee3697b6.svg",
+    "static/media/randomize.svg": "/levada/static/media/randomize.11a7f3d5.svg",
+    "static/media/select.svg": "/levada/static/media/select.950965ae.svg",
     "static/media/snap.wav": "/levada/static/media/snap.30677620.wav",
-    "static/media/up_arrow.svg": "/levada/static/media/up_arrow.d8b29be3.svg",
-    "static/media/volume_off.svg": "/levada/static/media/volume_off.bca01b79.svg",
-    "static/media/volume_on.svg": "/levada/static/media/volume_on.db1be231.svg"
+    "static/media/up_arrow.svg": "/levada/static/media/up_arrow.a1334332.svg",
+    "static/media/volume_off.svg": "/levada/static/media/volume_off.ca5b846a.svg",
+    "static/media/volume_on.svg": "/levada/static/media/volume_on.ddbdc915.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.a543009b.js",
-    "static/js/2.ac64d33c.chunk.js",
-    "static/css/main.6a7599e4.chunk.css",
-    "static/js/main.6a0c5f3c.chunk.js"
+    "static/js/2.30042af6.chunk.js",
+    "static/css/main.21a0ea7b.chunk.css",
+    "static/js/main.6efe0cfd.chunk.js"
   ]
 }
