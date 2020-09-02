@@ -43,6 +43,9 @@ interface ControlsMenuProps {
     selectedFigures: { [figure: string]: boolean };
     chooseFunction: (figure: string) => void;
     selectFunction: (figure: string) => void;
+
+    selectAll: () => void;
+    deselectAll: () => void;
 }
 
 function ControlsMenu({
@@ -65,6 +68,8 @@ function ControlsMenu({
     selectedFigures,
     chooseFunction,
     selectFunction,
+    selectAll,
+    deselectAll,
 }: ControlsMenuProps): JSX.Element {
     const INIT_BPM = 80;
     const MAX_BPM = 140;
@@ -96,7 +101,7 @@ function ControlsMenu({
                 </button>
 
                 <Tooltip
-                    title="Add new beat"
+                    title={areNoFiguresSelected ? 'Select at least 1 figure to add new beats' : 'Add new beat'}
                     placement="top"
                     enterNextDelay={TOOLTIP_DELAY}
                     enterDelay={TOOLTIP_DELAY}
@@ -148,7 +153,11 @@ function ControlsMenu({
                 </Tooltip>
 
                 <Tooltip
-                    title="Randomize current sequence"
+                    title={
+                        areNoFiguresSelected
+                            ? 'Select at least 1 figure to generate a new rhythm'
+                            : 'Generate new rhythm'
+                    }
                     placement="top"
                     enterNextDelay={TOOLTIP_DELAY}
                     enterDelay={TOOLTIP_DELAY}
@@ -257,6 +266,8 @@ function ControlsMenu({
                 selectFunction={selectFunction}
                 chooseFunction={chooseFunction}
                 areMaxBeatsSelected={areMaxBeatsSelected}
+                selectAll={selectAll}
+                deselectAll={deselectAll}
             />
         </div>
     );

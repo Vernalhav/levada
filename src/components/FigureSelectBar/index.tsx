@@ -13,6 +13,8 @@ interface FigureSelectBarProps {
     areMaxBeatsSelected: boolean;
     chooseFunction: (figure: string) => void;
     selectFunction: (figure: string) => void;
+    selectAll: () => void;
+    deselectAll: () => void;
 }
 
 export enum states {
@@ -34,6 +36,8 @@ function FigureSelectBar({
     chooseFunction,
     selectFunction,
     selectedFigures,
+    selectAll,
+    deselectAll,
 }: FigureSelectBarProps): JSX.Element {
     function displayTitle(): string {
         if (state === states.NONE) return statesMessages[prevState];
@@ -64,12 +68,25 @@ function FigureSelectBar({
                 <div>
                     <p>{displayTitle()}</p>
                 </div>
+
+                {(state === states.SELECT || prevState === states.SELECT) && (
+                    <div className="toggles-container">
+                        <button className="select-button" onClick={selectAll} type="button">
+                            Select all
+                        </button>
+                        <button className="deselect-button" onClick={deselectAll} type="button">
+                            Deselect all
+                        </button>
+                    </div>
+                )}
+
                 <div className="figures-container">
                     {RHYTHMIC_FIGURE_NAMES.map((figureName, index) => {
                         return (
                             <RhythmicFigure
                                 type={figureName}
                                 key={index}
+                                selectBarFigure
                                 isHighlighted={isHighlighted(figureName)}
                                 isShining={isFlashing[figureName]}
                                 style={state === states.SELECT || !areMaxBeatsSelected ? { cursor: 'pointer' } : {}}

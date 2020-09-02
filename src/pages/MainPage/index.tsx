@@ -119,6 +119,22 @@ function MainPage(): JSX.Element {
         handleNewBeat(figure);
     }
 
+    function selectAll() {
+        const tempSelected = { ...selectedFigures };
+        for (const figure in tempSelected) {
+            tempSelected[figure] = true;
+        }
+        setSelectedFigures(tempSelected);
+    }
+
+    function deselectAll() {
+        const tempSelected = { ...selectedFigures };
+        for (const figure in tempSelected) {
+            tempSelected[figure] = false;
+        }
+        setSelectedFigures(tempSelected);
+    }
+
     return (
         <div id="main-page">
             <header>
@@ -155,6 +171,8 @@ function MainPage(): JSX.Element {
                 selectedFigures={selectedFigures}
                 chooseFunction={chooseFunction}
                 selectFunction={selectFunction}
+                selectAll={selectAll}
+                deselectAll={deselectAll}
             />
 
             <RhythmGrid
