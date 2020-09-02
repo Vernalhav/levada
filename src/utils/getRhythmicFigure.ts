@@ -8,7 +8,12 @@ import { RHYTHMIC_FIGURE_NAMES } from '../assets/RhythmicFigures';
  */
 export default function getRhythmicFigure(selectedFigures: { [figure: string]: boolean }, figure?: string): string {
     if (!figure) {
-        return RHYTHMIC_FIGURE_NAMES[Math.floor(Math.random() * RHYTHMIC_FIGURE_NAMES.length)];
+        const allowedFigures: Array<string> = [];
+        for (const [figure, selected] of Object.entries(selectedFigures)) if (selected) allowedFigures.push(figure);
+
+        console.log(allowedFigures);
+
+        return allowedFigures[Math.floor(Math.random() * allowedFigures.length)];
     }
     if (!selectedFigures.hasOwnProperty(figure)) {
         throw new RangeError(`Invalid rhythmic figure: ${figure}`);
