@@ -27,6 +27,8 @@ interface ControlsMenuProps {
     handleRemoveBeat: () => void;
 
     areControlsDisabled: boolean;
+    areNoFiguresSelected: boolean;
+    areMaxBeatsSelected: boolean;
 
     isMuted: boolean;
     handleMuteToggle: () => void;
@@ -51,6 +53,8 @@ function ControlsMenu({
     handleNewBeat,
     handleRemoveBeat,
     areControlsDisabled,
+    areNoFiguresSelected,
+    areMaxBeatsSelected,
     isMuted,
     handleMuteToggle,
     isLooping,
@@ -76,8 +80,14 @@ function ControlsMenu({
                 <button
                     className="play-btn"
                     type="button"
-                    disabled={isPlayDisabled || currentState !== states.NONE}
-                    onClick={handlePlayClick}
+                    disabled={isPlayDisabled}
+                    onClick={() => {
+                        if (!isPlaying) {
+                            setPrevState(currentState);
+                            setCurrentState(states.NONE);
+                        }
+                        handlePlayClick();
+                    }}
                 >
                     {isPlaying ? 'Stop' : 'Play'}
                 </button>
@@ -113,7 +123,7 @@ function ControlsMenu({
                 <button
                     className="randomize"
                     type="button"
-                    disabled={areControlsDisabled}
+                    disabled={areControlsDisabled || areNoFiguresSelected}
                     onClick={handleRandomizeBeats}
                 >
                     <img src={randomizeIcon} alt="Randomize beats" />
@@ -129,7 +139,7 @@ function ControlsMenu({
                 </button>
 
                 <button
-                    className="allow-figures"
+                    className={classNames({ 'allow-figures': true, 'is-active': currentState === states.SELECT })}
                     type="button"
                     disabled={areControlsDisabled || (currentState !== states.NONE && currentState !== states.SELECT)}
                     onClick={() => {
@@ -141,9 +151,13 @@ function ControlsMenu({
                 </button>
 
                 <button
-                    className="choose-figure"
+                    className={classNames({ 'choose-figure': true, 'is-active': currentState === states.CHOOSE })}
                     type="button"
-                    disabled={areControlsDisabled || (currentState !== states.NONE && currentState !== states.CHOOSE)}
+                    disabled={
+                        areControlsDisabled ||
+                        (areMaxBeatsSelected && currentState !== states.CHOOSE) ||
+                        (currentState !== states.NONE && currentState !== states.CHOOSE)
+                    }
                     onClick={() => {
                         setPrevState(currentState);
                         currentState === states.NONE ? setCurrentState(states.CHOOSE) : setCurrentState(states.NONE);
@@ -172,8 +186,8 @@ function ControlsMenu({
             </div>
 
             <FigureSelectBar
-                state={areControlsDisabled ? states.NONE : currentState}
-                prevState={areControlsDisabled ? currentState : prevState}
+                state={currentState}
+                prevState={prevState}
                 selectedFigures={selectedFigures}
                 selectFunction={selectFunction}
                 chooseFunction={chooseFunction}

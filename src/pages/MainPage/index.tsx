@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 import levadaLogo from '../../assets/images/levada-logo-white.svg';
 
@@ -24,6 +24,14 @@ function MainPage(): JSX.Element {
     const [bpm, setBpm] = useState(INIT_BPM);
 
     const [selectedFigures, setSelectedFigures] = useState(getAllFigures());
+
+    const nSelected = useMemo(() => {
+        let nSelected = 0;
+        for (const [, allowed] of Object.entries(selectedFigures)) {
+            nSelected += allowed ? 1 : 0;
+        }
+        return nSelected;
+    }, [selectedFigures]);
 
     const [rhythmicFigures, setRhythmicFigures] = useState(() => {
         const randomArray: string[] = [];
@@ -124,11 +132,13 @@ function MainPage(): JSX.Element {
                 isPlaying={isPlaying}
                 isPlayDisabled={isCountingDown || maxBeats <= 1}
                 handlePlayClick={isPlaying ? endGame : startGame}
-                isAddBeatDisabled={isCountingDown || isPlaying || maxBeats >= MAX_BEATS}
+                isAddBeatDisabled={isCountingDown || nSelected <= 0 || isPlaying || maxBeats >= MAX_BEATS}
                 isRemoveBeatDisabled={isCountingDown || isPlaying || maxBeats <= MIN_BEATS}
                 handleNewBeat={handleNewBeat}
                 handleRemoveBeat={handleRemoveBeat}
                 areControlsDisabled={isCountingDown || isPlaying}
+                areNoFiguresSelected={nSelected <= 0}
+                areMaxBeatsSelected={maxBeats >= MAX_BEATS}
                 isMuted={isMuted}
                 handleMuteToggle={() => setIsMuted(!isMuted)}
                 isLooping={isLooping}
