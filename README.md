@@ -8,7 +8,9 @@ Sight reading sheet music is a daunting task. Not only do you need to worry abou
 Currently the site is in its barest-bones version possible, but it's enough to start practicing!  
 1. Use the add or remove beats button to specify the desired amount of beats  
 2. Set the BPM to the desired amount  
-3. Click the randomize button until a sequence you're happy with appears  
+3. Select the rhythm you want to practice by either  
+    3.1. Selecting which figures you want to appear by opening the "Select figures" (checked crotchet) pane and adding beats  
+    3.2. Setting a specific rhythm by choosing each figure individually in the "Choose figure" (plus) pane and choosing the desired figures
 4. Click the mute button  
 5. Play the sequence and click anywhere below the button menu whenever you think the note should be played.  
 6. Unmute, play the sequence again and check your progress :)  
@@ -61,7 +63,6 @@ Feedback is ALWAYS appreciated!
 
 # TODO:  
 - Scoring system!!  
-- Select only a subset of rhythmic figures to appear  
 - Remove rhythmic figure to image-generators' make  
 - Better parsing of dotted notes in image-generators/rhythms_data.json  
 - Play multi-beat rhythmic figures (and possibly display them in a different way)  
