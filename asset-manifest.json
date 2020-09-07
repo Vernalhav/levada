@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/levada/static/css/main.c8907638.chunk.css",
+    "main.css": "/levada/static/css/main.fb0b18a4.chunk.css",
     "main.js": "/levada/static/js/main.28035082.chunk.js",
     "main.js.map": "/levada/static/js/main.28035082.chunk.js.map",
     "runtime-main.js": "/levada/static/js/runtime-main.a543009b.js",
@@ -8,9 +8,9 @@
     "static/js/2.9ded5a38.chunk.js": "/levada/static/js/2.9ded5a38.chunk.js",
     "static/js/2.9ded5a38.chunk.js.map": "/levada/static/js/2.9ded5a38.chunk.js.map",
     "index.html": "/levada/index.html",
-    "precache-manifest.046baa848760a1b2c70362b17a9e93c1.js": "/levada/precache-manifest.046baa848760a1b2c70362b17a9e93c1.js",
+    "precache-manifest.30fe42f2e6eaed476177ad2069520af1.js": "/levada/precache-manifest.30fe42f2e6eaed476177ad2069520af1.js",
     "service-worker.js": "/levada/service-worker.js",
-    "static/css/main.c8907638.chunk.css.map": "/levada/static/css/main.c8907638.chunk.css.map",
+    "static/css/main.fb0b18a4.chunk.css.map": "/levada/static/css/main.fb0b18a4.chunk.css.map",
     "static/js/2.9ded5a38.chunk.js.LICENSE.txt": "/levada/static/js/2.9ded5a38.chunk.js.LICENSE.txt",
     "static/media/add.svg": "/levada/static/media/add.d598ca5a.svg",
     "static/media/beat.wav": "/levada/static/media/beat.7b031259.wav",
@@ -29,7 +29,7 @@
   "entrypoints": [
     "static/js/runtime-main.a543009b.js",
     "static/js/2.9ded5a38.chunk.js",
-    "static/css/main.c8907638.chunk.css",
+    "static/css/main.fb0b18a4.chunk.css",
     "static/js/main.28035082.chunk.js"
   ]
 }
