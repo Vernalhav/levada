@@ -1,18 +1,20 @@
 :root {
     --color-background: #2F2F2F;
-    --color-contrast: #FFFFFF;
+    --color-contrast: #ffffff;
     --color-secondary: #346e3c;
     --color-secondary-hover: #3A7D44;
     --color-tertiary: #B7245C;
     --color-quaternary: #A11692;
     --color-button-disabled: #c2c2c2c0;
-    --color-beat-played: #323232;
+    --color-select-bar: #4d4d4d;
+    --color-select-bar-highlight: #666666;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    touch-action: manipulation; /* Disable double tap to zoom */
 }
 
 div,

@@ -26,7 +26,7 @@ function RhythmGrid({ enableHighlighting = false, ...props }: RhythmGridProps): 
                     return (
                         <RhythmicFigure
                             type={rhythmicFigure}
-                            isCurrentBeat={enableHighlighting && props.currentBeat % maxBeats === i}
+                            isHighlighted={enableHighlighting && props.currentBeat % maxBeats === i}
                             isShining={flash}
                             key={i}
                         />

@@ -9,9 +9,8 @@
     width: 100vw;
 
     display: grid;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-bottom: 1.3rem;
+    padding: 0 1.5rem 0.9rem;
+
     column-gap: 0.9rem;
     row-gap: 0.5rem;
     grid-auto-rows: max-content;
@@ -24,7 +23,7 @@
     }
 }
 
-@media (min-width: 900px){
+@media (min-width: 950px){
     #rhythm-grid .container {
         grid-template-columns: repeat(5, 1fr);
     }

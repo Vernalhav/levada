@@ -13,7 +13,7 @@ type soundBuffers = { [name: string]: AudioBuffer };
 const sounds = {} as soundBuffers;
 initializeAudioBuffers();
 
-const MIN_PLAYBACK_RATE = 1.5;
+const MIN_PLAYBACK_RATE = 2.5;
 const MAX_PLAYBACK_RATE = 2.5;
 
 // Contains an array with all source nodes played in the current beat.
@@ -64,6 +64,8 @@ export default async function playBeat(rhythmicFigure: string, tempo: number, be
     const rhythm = RHYTHMIC_FIGURES[rhythmicFigure].rhythm;
 
     const playbackRate = clamp(MIN_PLAYBACK_RATE, tempo / 40, MAX_PLAYBACK_RATE);
+
+    if (audioContext.state !== 'running') await audioContext.resume();
 
     let currentElementTime = audioContext.currentTime + 0.1;
     playAudio('beat', currentElementTime - 0.01, playbackRate); // Not an ideal solution

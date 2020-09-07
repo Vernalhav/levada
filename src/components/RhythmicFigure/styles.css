@@ -4,8 +4,13 @@
     align-items: center;
     height: 7rem;
     border: 3px solid var(--color-contrast);
+    background-color: transparent;
     opacity: 0.3;
-    transition: opacity 0.2s;
+    transition: all 0.2s;
+}
+
+.rhythmic-figure.select-bar-figure:hover {
+    background-color: var(--color-select-bar-highlight);
 }
 
 .rhythmic-figure.highlighted{
@@ -18,5 +23,5 @@
 }
 
 .rhythmic-figure.shining.highlighted {
-    animation: beat 0.1s linear 1;
+    animation: beat 0.3s linear 1;
 }
