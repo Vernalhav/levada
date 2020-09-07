@@ -4,7 +4,7 @@ If you have any questions about the project's code and structure, please open an
 This is my first React project, so if you see any anti-patterns, hacky solutions or things that could be improved in general, please open an issue with the \[Improvement\] tag! I'm always looking for ways to make my code better :)  
 Feedback is ALWAYS appreciated!  
   
-# Settoing up the development environment  
+# Setting up the development environment  
 To contribute, fork the project, open up a new branch (preferably with a semantic name) and then when you're done, open up a Pull Request. I'll review them as soon as possible, so you won't be left waiting long for a merge or for feedback.  
 To set up the development environment, simply run `npm install` on the root directory and then `npm start`.  
 To install npm, see the [downloads page](https://nodejs.org/en/download/).  
