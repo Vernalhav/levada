@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2f95a6d5123bf20616f6ef277ab007d1",
+    "revision": "bbf214258d8b8dd426905b819f3add3a",
     "url": "/levada/index.html"
   },
   {
-    "revision": "4394c17062de6f325d42",
-    "url": "/levada/static/css/main.fb0b18a4.chunk.css"
+    "revision": "0fc3d532b5cbdc2e2d40",
+    "url": "/levada/static/css/main.6a030176.chunk.css"
   },
   {
     "revision": "ee44fcb440c5048ce7f5",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/levada/static/js/2.9ded5a38.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4394c17062de6f325d42",
+    "revision": "0fc3d532b5cbdc2e2d40",
     "url": "/levada/static/js/main.28035082.chunk.js"
   },
   {
